@@ -14,8 +14,8 @@
 -(NSMutableArray*) parseFromXmlData:(NSData*) xmlData {	
 	
 	// Create a new, empty itemArray
-    items = [[NSMutableArray alloc] init];
-	
+    items = [[NSMutableArray alloc] init];    
+
 	//create the dateFormatter instance
 	dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
@@ -37,24 +37,41 @@
 	return items;
 }
 
+-(NSData*) parseFromLocalFile:(NSString*) urlString {
+    
+    NSData *myData = [NSData dataWithContentsOfFile:urlString];
+    
+    return myData;
+    
+}
+
+
 -(NSMutableArray*) parseFromURL:(NSString*) urlString {
-	
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
-												cachePolicy:NSURLRequestReturnCacheDataElseLoad 
-											timeoutInterval:30];
-
-    NSData *urlData;
-    NSURLResponse *response;
-    NSError *error;
-	
-    urlData = [NSURLConnection sendSynchronousRequest:urlRequest
-                                    returningResponse:&response 
-                                                error:&error];
-
-	
-	return [self parseFromXmlData:urlData];
-
+    
+    if ([urlString hasPrefix:@"file://"]) {
+        NSData* urlData = [self parseFromLocalFile:urlString];
+//        return [self parseFromXmlData:urlData];
+        
+        
+        return [self parseFromXmlData:urlData]; 
+    }
+    else {
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
+                                                    cachePolicy:NSURLRequestReturnCacheDataElseLoad 
+                                                timeoutInterval:30];
+        
+        NSData *urlData;
+        NSURLResponse *response;
+        NSError *error;
+        
+        urlData = [NSURLConnection sendSynchronousRequest:urlRequest
+                                        returningResponse:&response 
+                                                    error:&error];
+        
+        
+        return [self parseFromXmlData:urlData];        
+    }
 }
 
 

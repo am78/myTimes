@@ -691,6 +691,7 @@ NSInteger calItemTimeSort(id obj0, id obj1, void *reverse) {
 	cell.project = p;
 	[cell setRow:[indexPath row]];
 	[cell setCtl:self];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
  	return cell;
 }
 
@@ -705,9 +706,9 @@ NSInteger calItemTimeSort(id obj0, id obj1, void *reverse) {
 
 // The accessory type is the image displayed on the far right of each table cell. In order for the delegate method
 // tableView:accessoryButtonClickedForRowWithIndexPath: to be called, you must return the "Detail Disclosure Button" type.
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	return UITableViewCellAccessoryDisclosureIndicator;
-}
+//- (UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
+//	return UITableViewCellAccessoryDisclosureIndicator;
+//}
 
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {

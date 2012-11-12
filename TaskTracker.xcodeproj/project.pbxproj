@@ -13,6 +13,9 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		4C00143215013AC200383811 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C00143115013AC200383811 /* Default@2x.png */; };
+		4C00143315013AC200383811 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C00143115013AC200383811 /* Default@2x.png */; };
+		4C00143515013FEC00383811 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C00143415013FEC00383811 /* Icon@2x.png */; };
 		4C0E71A9119D576200D23623 /* TaskEditViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E71A7119D576200D23623 /* TaskEditViewController2.m */; };
 		4C0E71AA119D576200D23623 /* TaskEditViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0E71A8119D576200D23623 /* TaskEditViewController2.xib */; };
 		4C0E72FE119D9BA300D23623 /* TextEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E72FD119D9BA300D23623 /* TextEditController.m */; };
@@ -42,6 +45,7 @@
 		4C2FA0740F48607100F1C6F7 /* red-button-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2FA0730F48607100F1C6F7 /* red-button-background.png */; };
 		4C2FA1460F499B2300F1C6F7 /* PauseEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2FA1450F499B2300F1C6F7 /* PauseEditView.xib */; };
 		4C2FA14A0F499BD800F1C6F7 /* PauseEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FA1490F499BD800F1C6F7 /* PauseEditViewController.m */; };
+		4C3BF46D161F3D0A007CB6D7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3BF46C161F3D0A007CB6D7 /* Default-568h@2x.png */; };
 		4C3FDCFD11F62E78005D8D8D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3FDCFC11F62E78005D8D8D /* Default.png */; };
 		4C4330FF0FA4AEE900852538 /* XmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4330FE0FA4AEE900852538 /* XmlParser.m */; };
 		4C5B91B40F236403008C3A84 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B91B30F236403008C3A84 /* MainWindow.xib */; };
@@ -304,6 +308,8 @@
 		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4C00143115013AC200383811 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4C00143415013FEC00383811 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4C0E71A6119D576200D23623 /* TaskEditViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskEditViewController2.h; sourceTree = "<group>"; };
 		4C0E71A7119D576200D23623 /* TaskEditViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskEditViewController2.m; sourceTree = "<group>"; };
 		4C0E71A8119D576200D23623 /* TaskEditViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TaskEditViewController2.xib; path = Classes/TaskEditViewController2.xib; sourceTree = "<group>"; };
@@ -353,6 +359,7 @@
 		4C2FA1450F499B2300F1C6F7 /* PauseEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PauseEditView.xib; sourceTree = "<group>"; };
 		4C2FA1480F499BD800F1C6F7 /* PauseEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseEditViewController.h; sourceTree = "<group>"; };
 		4C2FA1490F499BD800F1C6F7 /* PauseEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseEditViewController.m; sourceTree = "<group>"; };
+		4C3BF46C161F3D0A007CB6D7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4C3FDCFC11F62E78005D8D8D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4C4330FD0FA4AEE900852538 /* XmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlParser.h; sourceTree = "<group>"; };
 		4C4330FE0FA4AEE900852538 /* XmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlParser.m; sourceTree = "<group>"; };
@@ -599,6 +606,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4C00143415013FEC00383811 /* Icon@2x.png */,
 				4C774A8B14608D83003347C4 /* Frank */,
 				4CDE91C0144B060500E0290C /* icon.png */,
 				4C61BB180F9253DC009E7F94 /* model */,
@@ -624,6 +632,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4C3BF46C161F3D0A007CB6D7 /* Default-568h@2x.png */,
+				4C00143115013AC200383811 /* Default@2x.png */,
 				4CDE91C2144B07BD00E0290C /* app-icon.jpg */,
 				4C821C8E11FAD2D100DEB19C /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -1021,7 +1031,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TaskTracker" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1118,6 +1128,9 @@
 				4C821C9011FAD2D100DEB19C /* Icon.png in Resources */,
 				4CDE91C1144B060500E0290C /* icon.png in Resources */,
 				4CDE91C3144B07BD00E0290C /* app-icon.jpg in Resources */,
+				4C00143215013AC200383811 /* Default@2x.png in Resources */,
+				4C00143515013FEC00383811 /* Icon@2x.png in Resources */,
+				4C3BF46D161F3D0A007CB6D7 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,6 +1228,7 @@
 				4C774A9514608D83003347C4 /* common_steps.rb in Resources */,
 				4C774A9614608D83003347C4 /* env.rb in Resources */,
 				4C774A9714608D83003347C4 /* frank_static_resources.bundle in Resources */,
+				4C00143315013AC200383811 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,7 +1497,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TaskTracker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Calendar/build/Debug-iphonesimulator\"",
@@ -1500,6 +1514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1508,12 +1523,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TaskTracker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Calendar/build/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = TaskTracker;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1617,9 +1633,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PROVISIONING_PROFILE = "C9B19F50-82C7-4C1C-AFA1-3B61501DE4F3";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = distribution;
 		};
@@ -1627,6 +1644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1635,12 +1653,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TaskTracker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Calendar/build/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = TaskTracker;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = distribution;
@@ -1649,16 +1668,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1670,9 +1690,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB73757F-6D2B-4F1C-BB91-DDBC798C4608";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

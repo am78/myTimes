@@ -38,6 +38,7 @@
 @synthesize promptForCommentWhenStoppingTime;
 @synthesize dataToRestore;
 @synthesize restoreFilePath;
+@synthesize importFile;
 
 /* format seconds to  e.g. 2:19 h for 2 hours and 19 minutes */
 -(NSString*) formatSeconds:(float)timeInSecs {	
@@ -91,6 +92,8 @@
 //or mytimes://?importsource=<URL to XML file>
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     if (!url) {  return NO; }
+    
+    self.importFile = nil;
 	
 	NSString *URLString = [url absoluteString];
 	NSLog(@"open url: %@", URLString);
@@ -114,6 +117,7 @@
 		//Import URL zwischenspeichern, damit zu einenm späteren Zeitpunkt (wenn Anwendung geladen wurde) darauf zugegriffen werden kann
 		[[NSUserDefaults standardUserDefaults] setObject:xmlData forKey:@"importdata"];
 		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"importsource"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"importsourceUrl"];        
 		[[NSUserDefaults standardUserDefaults] synchronize];		
 		
 		return YES;
@@ -136,10 +140,39 @@
 			//Import URL zwischenspeichern, damit zu einenm späteren Zeitpunkt (wenn Anwendung geladen wurde) darauf zugegriffen werden kann
 			[[NSUserDefaults standardUserDefaults] setObject:xmlUrl forKey:@"importsource"];
 			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"importdata"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"importsourceUrl"];
 			[[NSUserDefaults standardUserDefaults] synchronize];
 	
 			return YES;
-		}
+		} 
+        else {
+            //import from file in documents/inbox directory (when opening mail attachment)
+            
+            if ([url isFileURL]) {
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"importdata"];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"importsource"];                
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                self.importFile = nil;                
+                
+
+                NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                NSString *theFileName = [URLString lastPathComponent];
+                NSString *path = [NSString stringWithFormat:@"%@/Inbox/%@", documentsDirectory, theFileName];
+                self.importFile = path;                                
+                
+                //Import data from file
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"xml.importAtStart.importSourceDialogTitle2", @"")
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"xml.import.importSourceDialog.cancel", @"") 
+                                                      otherButtonTitles:NSLocalizedString(@"xml.import.importSourceDialog.ok", @""), NSLocalizedString(@"xml.import.importSourceDialog.ok2", @""), nil];
+                [alert show];
+                [alert release];		
+
+                return YES;
+            }
+            
+        }
 	}
 	return FALSE;
 }
@@ -216,6 +249,46 @@
 }
 
 
+//import projects from url e.g.: http://iphone.anteboth.com/mytimes/xml/mytimes-export.xml
+-(void) importFromString:(NSString*)sData addAsNewProjects:(BOOL)addProjects {
+	if (sData == nil) return;
+    
+    
+	NSLog(@"import data: %@", sData);
+	
+    NSData* xmldata = [sData dataUsingEncoding:NSUTF8StringEncoding];
+    
+	//create parser and start parsing
+	XmlParser* parser = [[XmlParser alloc]init];
+	NSMutableArray* importedProjects = [parser parseFromXmlData:xmldata];
+	[parser release];
+	
+	if (importedProjects != nil && [importedProjects count] > 0 && !addProjects) {
+		//there is at least one project to import and the user requsested to delete the old projects
+		//so remove all projects
+		[self.data removeAllObjects];
+	}
+	
+	//Add the imported projects to the project list
+	for (Project* p in importedProjects) {
+		[self.data addObject:p];
+	}
+	
+	int count = [importedProjects count];
+	NSString* msg = [NSString stringWithFormat:NSLocalizedString(@"xml.import.n_projectsImported.message", @""), count];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"xml.import.projectsImportetTitle", @"")
+													message:msg
+												   delegate:nil 
+										  cancelButtonTitle:nil
+										  otherButtonTitles:NSLocalizedString(@"xml.import.importFinished.ok", @""), nil];
+	[alert show];
+	[alert release];
+	
+	//refresh table
+	[self.currentTableView reloadData];
+}
+
+
 //wenn ok gedrückt wurde den import fortsetzen
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	//TODO error handling
@@ -232,10 +305,34 @@
 		//OK pressed, so start the import
 		NSString* xmlUrl = [[NSUserDefaults standardUserDefaults] valueForKey:@"importsource"];
 		if (xmlUrl != nil) {
-			[self importFromUrl:[NSURL URLWithString:xmlUrl] addAsNewProjects:addProjects];
+			[self importFromUrl:xmlUrl addAsNewProjects:addProjects];
 			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"importsource"];
 			[[NSUserDefaults standardUserDefaults] synchronize];
 		}
+                
+   		
+        if (self.importFile != nil)
+        {
+            //if import file name set
+            //load data from file
+            
+            NSError* error = nil;
+            NSData* myData = [[NSData dataWithContentsOfFile:self.importFile options:NSDataReadingMapped error:&error] retain];
+            
+            if (error) {
+                NSLog(@"Error: %@", [error localizedDescription]);
+            }
+            else{
+                if (myData) {  
+                    //and start the import
+                    [self importFromXMLData:myData addAsNewProjects:addProjects];
+                }
+            }
+            
+            //set filename to nil
+            self.importFile = nil;
+            
+        }
 	} 
 }
 
@@ -454,7 +551,7 @@
 	NSLog(@"Current language: %@", currentLanguage);
 	NSLog(@"Welcome Text: %@", NSLocalizedString(@"welcomekey", @"welcome"));
 	
-	
+	window.rootViewController = rootViewController;
 	
 	// Configure and show the window
 	[window addSubview:[navigationController view]];
@@ -636,6 +733,7 @@
 	[dataEntryDefinitions release];
 	[dataToRestore release];
 	[restoreFilePath release];
+    [self.importFile release];
 	[super dealloc];
 }
 

@@ -40,6 +40,7 @@
 	NSMutableDictionary* dataEntryDefinitions;
 	NSMutableArray* dataToRestore;
 	NSString* restoreFilePath;
+    NSString* importFile;
 }
 
 - (void) toogleTableEditMode:(BOOL)editing;
@@ -50,6 +51,7 @@
 - (void) stopAllOtherWorkUnitsExcept:(TimeWorkUnit*)workUnit;
 -(void) reselectActiveEntries;
 -(void) importFromUrl:(NSString*)urlString addAsNewProjects:(BOOL)addProjects;
+-(void) importFromString:(NSString*)sData   addAsNewProjects:(BOOL)addProjects;
 -(void) importFromXMLData:(NSData*)xmlData addAsNewProjects:(BOOL)addProjects;
 -(void) saveData;
 
@@ -59,7 +61,7 @@
 @property (retain) NSDateFormatter* dateFormatter;
 @property (retain) NSDateFormatter* timeFormatter;
 @property (retain) Project* editingProject;
-@property (retain) RootViewController* rootViewController;
+@property (retain) IBOutlet RootViewController* rootViewController;
 @property (nonatomic, retain) NSMutableArray* data;
 @property (nonatomic, retain) NSMutableDictionary* dataEntryDefinitions;
 @property (retain) UITableView* currentTableView;
@@ -82,6 +84,7 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (retain) NSMutableArray* dataToRestore;
 @property (retain) NSString* restoreFilePath;
+@property (nonatomic, retain) NSString* importFile;
 
 @end
 

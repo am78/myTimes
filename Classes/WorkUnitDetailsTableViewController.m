@@ -365,7 +365,7 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+	UITableViewCell* acell = nil;
 	if (indexPath.section == COLIDX_DEL) {
 		//PlaPauseDelete CellView
 		static NSString *CellIdentifier = @"DeleteCell";		 
@@ -375,7 +375,7 @@
 			cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 		}
 		[cell addSubview:self.playPauseDeleteView];
-		return cell;
+		acell = cell;
 	} else if (indexPath.section == COLIDX_PROJECT && indexPath.row == 0) {
 		static NSString *CellIdentifier = @"ProjectCell";	
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];		
@@ -389,7 +389,7 @@
 		}
 		cell.textLabel.text = NSLocalizedString(@"label.project", @"");
 		cell.detailTextLabel.text = txt;
-		return cell;
+		acell = cell;
 	} else if (indexPath.section == COLIDX_PROJECT && indexPath.row == 1) {
 		static NSString *CellIdentifier = @"SubprojectCell";	
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];		
@@ -404,7 +404,7 @@
 		}
 		cell.textLabel.text =  NSLocalizedString(@"label.subproject", @"");
 		cell.detailTextLabel.text = txt;
-		return cell;
+		acell = cell;
 	} else if (indexPath.section == COLIDX_START && indexPath.row == 0) {
 		//Start cell
 		static NSString *CellIdentifier = @"StartCell";		 
@@ -420,7 +420,7 @@
 		}
 		cell.textLabel.text = NSLocalizedString(@"label.start", @"");
 		cell.detailTextLabel.text = txt;
-		return cell;
+		acell = cell;
 	} else if (indexPath.section == COLIDX_START && indexPath.row == 1) {
 		//end cell
 		static NSString *CellIdentifier = @"EndCell";		 
@@ -436,7 +436,7 @@
 		}
 		cell.textLabel.text = NSLocalizedString(@"label.end", @"");
 		cell.detailTextLabel.text = txt;
-		return cell;
+		acell = cell;
 	} else if (indexPath.section == COLIDX_START && indexPath.row == 2) {
 		//duration cell
 		static NSString *CellIdentifier = @"DurationCell";		 
@@ -452,7 +452,7 @@
 		}
 		cell.textLabel.text = NSLocalizedString(@"label.duration", @"");
 		cell.detailTextLabel.text = txt;
-		return cell;
+		acell = cell;
 	} else if (indexPath.section == COLIDX_PAUSE) {
 		//pause cell
 		static NSString *CellIdentifier = @"PauseCell";
@@ -467,7 +467,7 @@
 		}
 		cell.textLabel.text = NSLocalizedString(@"label.pause", @"");
 		cell.detailTextLabel.text = txt;
-		return cell;
+		acell = cell;
 	} else if (indexPath.section == COLIDX_REMARK) {
 		//remark cell
 		static NSString *CellIdentifier = @"RemarkCell";
@@ -492,7 +492,7 @@
 			UIFont* f= [cell.textLabel.font fontWithSize:11];
 			cell.textLabel.font = f;
 		}
-		return cell;
+		acell = cell;
 	} else {
 		/*
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
@@ -504,25 +504,25 @@
 		*/
 		return nil;		
 	}
-}
-
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	int section = indexPath.section;
-	if (section == COLIDX_DEL) {
-		return UITableViewCellAccessoryNone;		
+    
+    int section = indexPath.section;
+    if (acell && section == COLIDX_DEL) {
+		acell.accessoryType = UITableViewCellAccessoryNone;		
 	} else if (section == COLIDX_PROJECT || section == COLIDX_PAUSE || section == COLIDX_REMARK) {
-		return UITableViewCellAccessoryDisclosureIndicator;
+		acell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	} else if (section == COLIDX_START) {
 		if (indexPath.row == 2) {
-			return UITableViewCellAccessoryNone;
+			acell.accessoryType = UITableViewCellAccessoryNone;
 		} else {
-			return UITableViewCellAccessoryDisclosureIndicator;
+			acell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		
 	} else {
-		return UITableViewCellAccessoryNone;		
+		acell.accessoryType = UITableViewCellAccessoryNone;		
 	}
+    return acell;
 }
+
 
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {

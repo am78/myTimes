@@ -36,7 +36,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
 	//create the save button
-	UIBarButtonItem *saveButton = [[[UIBarButtonItem alloc] initWithTitle:@"Weiter" 
+	UIBarButtonItem *saveButton = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"export.error.button.next", @"")
 																	style:UIBarButtonItemStyleDone
 																   target:self 
 																   action:@selector(proceed:)] autorelease];

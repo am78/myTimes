@@ -210,6 +210,7 @@
 		[taskCell setRow:[indexPath row]];
 		[taskCell setCtl:self];
 	}
+    taskCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return taskCell;
 }
 
@@ -272,9 +273,9 @@
 
 // The accessory type is the image displayed on the far right of each table cell. In order for the delegate method
 // tableView:accessoryButtonClickedForRowWithIndexPath: to be called, you must return the "Detail Disclosure Button" type.
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellAccessoryDisclosureIndicator;
-}
+//- (UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewCellAccessoryDisclosureIndicator;
+//}
 
 
 

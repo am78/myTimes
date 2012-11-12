@@ -103,12 +103,12 @@
 		//the name cell
 		if (indexPath.row == 0) {
 			cell.textLabel.text = self.task.name;
-			cell.detailTextLabel.text = @"Name";
+			cell.detailTextLabel.text = NSLocalizedString(@"name", @"");
 		}
 		//the description cell
 		else if (indexPath.row == 1) {
 			cell.textLabel.text = self.task.description;
-			cell.detailTextLabel.text = @"Beschreibung";
+			cell.detailTextLabel.text = NSLocalizedString(@"description", @"");
 		}
 	} 
 	//2nd section
@@ -135,6 +135,8 @@
 			[stateSwitch release];
 		}
 	}
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -180,9 +182,9 @@
 */
 
 
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	return UITableViewCellAccessoryDisclosureIndicator;
-}
+//- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
+//	return UITableViewCellAccessoryDisclosureIndicator;
+//}
 
 #pragma mark -
 #pragma mark Editing attributes
