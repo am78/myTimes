@@ -88,6 +88,9 @@
 	}
 	[self setNeedsDisplay];
 	[self updateButtonState];
+    
+    //we need to persist the changes
+    [appDelegate saveData];
 }
 
 -(void) setTask:(ProjectTask*)aTask {	

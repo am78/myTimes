@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Model.h"
 
 @interface Project : NSObject <NSCoding>
 {
@@ -35,6 +35,7 @@
 -(NSString*) summary;
 -(NSString*) formatSeconds:(float)timeInSecs;
 -(BOOL) hasRunningWorkUnits;
+-(BOOL) matchFilter:(DataFilterType)filter;
 
 @property (retain) NSString* name;
 @property (retain) NSMutableArray* tasks;

@@ -83,7 +83,7 @@
  qualifiedName:(NSString *)qName 
 	attributes:(NSDictionary *)attributeDict
 {
-    NSLog(@"starting Element: %@", elementName);
+//    NSLog(@"starting Element: %@", elementName);
 	
     // Is it the start of a new project item?
     if ([elementName isEqual:@"Project"]) {
@@ -105,8 +105,7 @@
 		} else {
 			projectInProgress.userChangeable = TRUE; //use true as default if no value set in XML
 		}
-		NSLog(@"project %@ is editable: %@", name, editable);
-		
+		NSLog(@"Parsing project %@ is editable: %@", name, editable);		
         return;
     }
 	
@@ -129,7 +128,7 @@
 		} else {
 			taskInProgress.userChangeable = TRUE; //use true as default if no value set in XML
 		}		
-		NSLog(@"task %@ is editable: %@", name, editable);
+//		NSLog(@"task %@ is editable: %@", name, editable);
 		
 		//add Task to current project
 		[projectInProgress.tasks addObject:taskInProgress];
@@ -165,7 +164,7 @@
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName
 {
-    NSLog(@"ending Element: %@", elementName);
+//    NSLog(@"ending Element: %@", elementName);
 	
     // Is the current item complete?
     if ([elementName isEqual:@"Project"]) {

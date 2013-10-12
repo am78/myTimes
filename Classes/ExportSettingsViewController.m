@@ -77,7 +77,7 @@
 
 //cancel operation and close the view
 -(void) cancel:(id) sender {
-	[self.navigationController popViewControllerAnimated:TRUE];
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 //validate data and proceed sending the mail
@@ -164,7 +164,6 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 	if (indexPath.section == 0) {
 		if(indexPath.row == 0) {
 			//CSV Switch cell
@@ -212,6 +211,7 @@
 			}
 			NSString* lblFormat = NSLocalizedString(@"export.label.options.startFormat", @"");
 			cell.textLabel.text = [NSString stringWithFormat:lblFormat, [TimeUtils formatDate:startDate withFormatType:2]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			return cell;
 		} else if (indexPath.row == 1) {
 			//Zeitbereich Ende
@@ -223,6 +223,7 @@
 			}
 			NSString* lblFormat = NSLocalizedString(@"export.label.options.endFormat", @"");
 			cell.textLabel.text = [NSString stringWithFormat:lblFormat, [TimeUtils formatDate:endDate withFormatType:2]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			return cell;
 		}
 	} else if (indexPath.section == 2 && indexPath.row == 0) {
@@ -263,6 +264,7 @@
 			}
 		}
 		cell.textLabel.text = txt;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		return cell;
 		
 	}
@@ -360,13 +362,6 @@
 - (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 1 || indexPath.section == 2) return indexPath;
 	return nil; //no row selection is allowed
-}
-
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == 1 || indexPath.section == 2)
-		return UITableViewCellAccessoryDisclosureIndicator;
-	else 
-		return UITableViewCellAccessoryNone;
 }
 
 

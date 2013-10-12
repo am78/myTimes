@@ -16,10 +16,13 @@
 #import "XMLHelper.h"
 #import "CsvExportHelper.h"
 #import "ExportSettingsViewController.h"
+#import "SyncManager.h"
+#import <InAppSettingsKit/IASKAppSettingsViewController.h>
 
 @class TaskTrackerAppDelegate;
 
-@interface RootViewController : UITableViewController <IAddItem, UIActionSheetDelegate, TableRowSelectionDelegate, CalendarTableViewDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate> {
+@interface RootViewController : UITableViewController <IAddItem, UIActionSheetDelegate, TableRowSelectionDelegate, CalendarTableViewDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate, IASKSettingsDelegate>
+{
 	NSMutableArray* data;
 	UIToolbar *toolbar;
 	TaskTrackerAppDelegate* appDelegate;
@@ -46,6 +49,9 @@
 @property (nonatomic,retain) IBOutlet UIBarButtonItem* helpButtonItem;
 @property (nonatomic,retain) IBOutlet UIBarButtonItem* nWorkUnitButton;
 @property (nonatomic,retain) NSMutableArray *data;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *filterButton;
+@property (retain, nonatomic) SyncManager* syncManager;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *settingsButtonItem;
 
 - (void) initToolbar;
 - (void) loadTimeEntryView;
@@ -55,6 +61,9 @@
 - (IBAction)openCalendarView:(id)sender;
 - (IBAction)emailButonPressed:(id)sender;
 - (IBAction)importButtonPressed:(id)sender;
+- (IBAction)filterButtonPressed:(id)sender;
+- (IBAction)syncButtonPressed:(id)sender;
+- (IBAction)settingsButtonPressed:(id)sender;
 - (void) showErrorMessage:(NSString*)msg;
 
 - (void) addNewWorkUnit:(id)sender;
@@ -71,7 +80,10 @@
 
 -(BOOL) isSameDay:(NSDate*) day0 anotherDate:(NSDate*)day1;
 
+-(void) syncChanges:(NSData*) data;
+
 -(NSDate*) getFirstDateInProjects:(NSArray*)projects;
 -(NSArray*) markDataForExport:(NSArray*)data startDate:(NSDate*)start endDate:(NSDate*)end projectsToExport:(NSMutableArray*)projects;
+
 
 @end

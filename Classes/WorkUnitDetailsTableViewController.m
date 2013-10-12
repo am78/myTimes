@@ -47,12 +47,14 @@
 @synthesize endString;
 @synthesize durationString;
 @synthesize parentController;
+@synthesize processedSwitch;
 
 
 #define COLIDX_PROJECT 0
 #define COLIDX_START 1
 #define COLIDX_PAUSE 2
 #define COLIDX_REMARK 3
+//#define COLIDX_PROCESSED 4
 #define COLIDX_DEL 4
  
 /*
@@ -87,14 +89,11 @@
 
 //delete confirm dialog closed
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	TaskTrackerAppDelegate* appDelegate = (TaskTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
 	if (actionViewMode == 1) { //if the user has beend asked if he really wants to discard his changes
 		actionViewMode = 0; //reset mode
 		if (buttonIndex == 0) {
 			//close the view
-			[self.navigationController popViewControllerAnimated:true];
-			//globale buttons de-/aktivieren
-			[appDelegate.rootViewController enabledGlobalButtons:true sender:self];
+            [self closeViewController];
 		} else {
 			return; //do nothing on cancel
 		}
@@ -106,10 +105,11 @@
 			[self.parentTask.workUnits removeObject:workUnit];
 			//refresh table
 			[self.parentTable reloadData];
-			//leave the vieew
-			[self.navigationController popViewControllerAnimated:YES];	
 			//globale buttons de-/aktivieren
-			[appDelegate.rootViewController enabledGlobalButtons:true sender:self];
+
+          //leave the view
+          [self closeViewController];
+            
 		} else {
 			//cancel choosen, do nothing
 			return;
@@ -137,6 +137,7 @@
 	workUnit.description = wuCopy.description;
 	workUnit.duration = wuCopy.duration;
 	workUnit.running = wuCopy.running;
+    workUnit.processed = self.processedSwitch.on;
 	
 	//if parent task changed remove workunit from the old task and add it to the new one
 	if (self.taskChanged && !workUnitAddMode) {
@@ -159,13 +160,10 @@
 
 	
 	//leave the vieew
-	[self.navigationController popViewControllerAnimated:YES];
+    [self closeViewController];
 	
 	//enabble the common add button in the lower left after leaving the edit view
 	TaskTrackerAppDelegate* appDelegate = (TaskTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
-	
-	//globale buttons de-/aktivieren
-	[appDelegate.rootViewController enabledGlobalButtons:true sender:self.navigationController.parentViewController];
 	
 	[appDelegate saveData];
 	
@@ -194,9 +192,7 @@
 	
 	//end time
 	NSDate* end = [wuCopy getEndDate];
-//	NSString *string = [TimeUtils formatTime:end withFormatType:2];	
-//	NSString* timeFormat = NSLocalizedString(@"workUnitDetails.timeFormat", @"");
-//	self.endString = [NSString stringWithFormat:timeFormat, string];
+
 	//TODO: only print date if differtent from start date
 	self.endString = [TimeUtils formatDateAndTime:end withFormatType:2];
 	
@@ -206,18 +202,6 @@
 	//Pause
 	self.pauseString = [appDelegate formatSeconds:[wuCopy.pause intValue]];
 	
-	//description
-/*	self.txtRemark.font = [UIFont systemFontOfSize:14];
-	if (wuCopy.description != nil && [wuCopy.description length] > 0) {
-		self.txtRemark.text = wuCopy.description;
-		self.txtRemark.textColor = [UIColor darkTextColor];
-	} else {
-		//no description available, display placeholder
-		self.txtRemark.textColor = [UIColor grayColor];
-		self.txtRemark.text = NSLocalizedString(@"notes.placeholder", @"");
-	}
- */
-	
 	//update start stop button and activity indicator
 	if (wuCopy.running) {
 		[self.startStopButton setBackgroundImage:[UIImage imageNamed:@"pause-btn.png"] forState:UIControlStateNormal];
@@ -226,6 +210,8 @@
 		[self.startStopButton setBackgroundImage:[UIImage imageNamed:@"play-btn.png"] forState:UIControlStateNormal];
 		[self.actIndicator stopAnimating];
 	}
+    
+    processed = wuCopy.processed;
 }
 
 -(void) cancelEditingAndCloseView:(id)sender {
@@ -243,8 +229,14 @@
 		[menu showInView:self.view];        
 		[menu release];
 	} else {
-		[self.navigationController popViewControllerAnimated:TRUE];
+        [self closeViewController];
 	}
+}
+
+- (void) closeViewController
+{
+//	[self.navigationController popViewControllerAnimated:TRUE];
+    [self.navigationController dismissViewControllerAnimated:true completion:nil];
 }
 
 #pragma mark UIViewDelegate methods
@@ -252,6 +244,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+    
 	actionViewMode = 0;
 	dirty = FALSE;
 	self.taskChanged = FALSE;
@@ -269,6 +262,8 @@
 																				 target:self action:@selector(cancelEditingAndCloseView:)] autorelease];
 	//and add it to the navigation bar
 	self.navigationItem.leftBarButtonItem = cancelButton;
+    
+    self.navigationController.navigationBarHidden = FALSE;
 	
 	
 	//disable the common add button in the lower left while editing
@@ -280,20 +275,15 @@
 	self.tableView.sectionHeaderHeight = 5;
 	//self.tableView.bounces = false;
 	[[NSBundle bundleForClass:[self class]] loadNibNamed:@"PlayPauseDeleteView" owner:self options:nil];
-/*	[[NSBundle bundleForClass:[self class]] loadNibNamed:@"ProjectSubprojectView" owner:self options:nil];
-	[[NSBundle bundleForClass:[self class]] loadNibNamed:@"StartStopView" owner:self options:nil];
-	[[NSBundle bundleForClass:[self class]] loadNibNamed:@"PauseView" owner:self options:nil];	
-	[[NSBundle bundleForClass:[self class]] loadNibNamed:@"RemarkView" owner:self options:nil];	
-*/	
+
 	//set background for delete button
 	//int state =  UIControlStateNormal || UIControlStateSelected || UIControlStateDisabled || UIControlStateHighlighted;
-	int state =  UIControlStateNormal;
-	UIImage* img = [[UIImage imageNamed:@"red-button-background.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0];
-	[self.deleteButton setBackgroundImage:img forState:state];	
+//	int state =  UIControlStateNormal;
+//	UIImage* img = [[UIImage imageNamed:@"red-button-background.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0];
+//	[self.deleteButton setBackgroundImage:img forState:state];
+    
 	
 	parentTaskOrg = self.parentTask;
-		
-//	self.tableView.allowsSelection = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -304,9 +294,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];	
-	//disable the common add button in the lower left while editing
-	TaskTrackerAppDelegate*	appDelegate = (TaskTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate.rootViewController enabledGlobalButtons:FALSE sender:self];
 }
 
 
@@ -319,19 +306,6 @@
 	
 }
 
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -341,7 +315,7 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 4;
 }
 
 
@@ -349,16 +323,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == COLIDX_PROJECT)	return 2; 
 	if (section == COLIDX_START)	return 3;
+//    if (section == 4) return 1;
 	return 1;
 }
 
 //customize the row height for each cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == COLIDX_PROJECT)	return 38;
-	if (indexPath.section == COLIDX_START)		return 38;
-	if (indexPath.section == COLIDX_REMARK)		return 60;	
-	if (indexPath.section == COLIDX_DEL)		return 50;
-	if (indexPath.section == COLIDX_PAUSE)		return 38;
+	if (indexPath.section == COLIDX_PROJECT)        return 38;
+	else if (indexPath.section == COLIDX_START)		return 38;
+	else if (indexPath.section == COLIDX_REMARK)	return 70;
+//	else if (indexPath.section == COLIDX_DEL)		return 70;
+	else if (indexPath.section == COLIDX_PAUSE)		return 38;
+//	else if (indexPath.section == COLIDX_PROCESSED)	return 38;
 	else return 70;
 }
 
@@ -366,17 +342,18 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell* acell = nil;
-	if (indexPath.section == COLIDX_DEL) {
-		//PlaPauseDelete CellView
-		static NSString *CellIdentifier = @"DeleteCell";		 
-		WorkUnitDetailsCellView *cell = (WorkUnitDetailsCellView*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil) {
-            cell = [[[WorkUnitDetailsCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-			cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-		}
-		[cell addSubview:self.playPauseDeleteView];
-		acell = cell;
-	} else if (indexPath.section == COLIDX_PROJECT && indexPath.row == 0) {
+//	if (indexPath.section == COLIDX_DEL) {
+//		//PlaPauseDelete CellView
+//		static NSString *CellIdentifier = @"DeleteCell";		 
+//		WorkUnitDetailsCellView *cell = (WorkUnitDetailsCellView*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//		if (cell == nil) {
+//            cell = [[[WorkUnitDetailsCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+//			cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+//		}
+//		[cell addSubview:self.playPauseDeleteView];
+//		acell = cell;
+//	} else
+    if (indexPath.section == COLIDX_PROJECT && indexPath.row == 0) {
 		static NSString *CellIdentifier = @"ProjectCell";	
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];		
 		if (cell == nil) {
@@ -493,16 +470,33 @@
 			cell.textLabel.font = f;
 		}
 		acell = cell;
+//	} else if (indexPath.section == COLIDX_PROCESSED) {
+//        //Processed Cell
+//        static NSString *CellIdentifier = @"ProcessedCell";
+//		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//		if (cell == nil) {
+//			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
+//			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            
+//            //add a switch
+//            UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+//            self.processedSwitch = switchview;
+//            cell.accessoryView = switchview;
+//            [switchview release];
+//		}
+//        //set switch value (processed property)
+//        self.processedSwitch.on = processed;
+//        cell.textLabel.text = @"  ";
+//        cell.detailTextLabel.text = NSLocalizedString(@"label.processed", @"");
+//        acell = cell;
 	} else {
-		/*
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+		
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dummyCell"];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"MyIdentifier"] autorelease];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"dummyCell"];
 		}
-		cell.text = @"TEST";
+		cell.textLabel.text = @"";
 		return cell;
-		*/
-		return nil;		
 	}
     
     int section = indexPath.section;
@@ -533,35 +527,58 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath == nil) return;
 	if (indexPath.section == COLIDX_PROJECT) {
-		//switch to project subproject mask
-		ProjectTaskEditViewController* ctl = [[ProjectTaskEditViewController alloc] initWithNibName:@"ProjectTaskEditView" bundle:nil];
-		ctl.parent = self;
-		ctl.workUnit = wuCopy;
-		ctl.project = parentProject;
-		ctl.task = parentTask;
-		[self presentModalViewController:ctl animated:TRUE];	
-		[ctl release];		
+        //switch to project subproject mask
+        ProjectTaskEditViewController* ctl = [[ProjectTaskEditViewController alloc] initWithNibName:@"ProjectTaskEditView" bundle:nil];
+        ctl.parent = self;
+        ctl.workUnit = wuCopy;
+        ctl.project = parentProject;
+        ctl.task = parentTask;
+        
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ctl];
+        nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:nc animated:YES];
+        [nc release];
+        
+		 [ctl release];
 	} else if (indexPath.section == COLIDX_START && indexPath.row < 2) {
 		//Pause edit mask
 		BeginEndEditViewController* ctl = [[BeginEndEditViewController alloc] initWithNibName:@"BeginEndEditView" bundle:nil];
 		ctl.parent = self;
 		ctl.workUnit = wuCopy;
 		ctl.editStartTime = indexPath.row == 0;
-		[self presentModalViewController:ctl animated:TRUE];	
+
+        //present the details controller as a modal controller with an own navigation controller (for the nav bar)
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:ctl];
+        navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:navController animated:YES];
+        [navController release];
+        
 		[ctl release];
 	} else if (indexPath.section == COLIDX_PAUSE) {
 		//Switch to pause mask
 		PauseEditViewController* ctl = [[PauseEditViewController alloc] initWithNibName:@"PauseEditView" bundle:nil];
 		ctl.parent = self;
 		ctl.workUnit = wuCopy;
-		[self presentModalViewController:ctl animated:TRUE];	
+        
+        //present the details controller as a modal controller with an own navigation controller (for the nav bar)
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:ctl];
+        navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:navController animated:YES];
+        [navController release];
+
 		[ctl release];
 	} else if (indexPath.section == COLIDX_REMARK) {
 		//switch to description mask
 		TextEditViewController* ctl = [[TextEditViewController alloc] initWithNibName:@"TextEditView" bundle:nil];
 		ctl.workUnit = wuCopy;
 		ctl.parent = self;
-		[self presentModalViewController:ctl animated:TRUE];
+        
+        //present the details controller as a modal controller with an own navigation controller (for the nav bar)
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:ctl];
+        navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:navController animated:YES];
+        [navController release];
+
 		[ctl release];
 	}
 }
@@ -573,29 +590,6 @@
     // Return NO if you do not want the specified item to be editable.
     return NO;
 }
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
 
 
 // Override to support conditional rearranging of the table view.

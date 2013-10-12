@@ -234,7 +234,7 @@
 				  rectColor:desc.color 
 				strokeColor:desc.color 
 				strokeWidth:0 
-			   cornerRadius:10
+			   cornerRadius:5
 				 isSelected:selected];
 	}
 }

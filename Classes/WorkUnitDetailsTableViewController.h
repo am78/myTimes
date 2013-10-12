@@ -44,7 +44,8 @@
 	NSString* pauseString;
 	NSString* startString;	
 	NSString* endString;
-	NSString* durationString;	
+	NSString* durationString;
+    BOOL processed;
 }
 
 @property BOOL taskChanged; 
@@ -76,12 +77,13 @@
 @property (retain) NSString* endString;
 @property (retain) NSString* durationString;
 @property (retain) id parentController;
+@property (retain, nonatomic) UISwitch* processedSwitch;
 
 -(void) updateDataFields;
 
 -(void) deleteBtnPressed:(id) sender;
 //-(void) saveBtnPressed:(id) sender;
 -(void) startBtnPressed:(id) sender;
-
+-(void) closeViewController;
 
 @end

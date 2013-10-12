@@ -8,7 +8,7 @@
 
 
 #import <UIKit/UIKit.h>
-
+#import "Model.h"
 
 @interface TimeWorkUnit : NSObject <NSCoding> {
 	
@@ -21,6 +21,7 @@
 	BOOL running; //is this item started und active
 	BOOL markedForExport;	
 	BOOL paused;//is this entry running but paused
+    BOOL processed;//is proccessed/cleared or not
 }
 
 
@@ -35,12 +36,14 @@
 @property BOOL running;
 @property BOOL markedForExport;
 @property BOOL paused;
+@property BOOL processed;
 
 -(NSDate*) getEndDate;
 
 -(void) startTimeTracking;
 -(void) stopTimeTracking;
 -(id) init;
+-(BOOL) matchFilter:(DataFilterType)filter;
 
 - (NSComparisonResult)compareByStartDate:(TimeWorkUnit*) aWorkUnit;
 

@@ -266,6 +266,13 @@ b97ac0d59f0922c02bbcb9bc4a94dca7
 18
 michael
 
+NSArray+Filter.h
+file
+0
+
+
+add
+
 TimeWorkUnit.h
 file
 
@@ -337,6 +344,13 @@ file
 19
 michael
 
+NSArray+Filter.m
+file
+0
+
+
+add
+
 ProjectTaskEditTableViewController.h
 file
 
@@ -396,18 +410,6 @@ cfda06c69b4bda5f8502746049471a13
 22
 michael
 
-ProjectTaskEditTableViewController.m
-file
-
-
-
-
-2010-01-29T19:07:32.000000Z
-8a70bc608a48cba0852c2e16150507ce
-2010-02-14T17:16:18.518041Z
-22
-michael
-
 ProjectEditViewController.h
 file
 
@@ -418,6 +420,18 @@ file
 c663dffaf93d015e52f7a492a905e61b
 2009-09-09T19:07:06.095398Z
 18
+michael
+
+ProjectTaskEditTableViewController.m
+file
+
+
+
+
+2010-01-29T19:07:32.000000Z
+8a70bc608a48cba0852c2e16150507ce
+2010-02-14T17:16:18.518041Z
+22
 michael
 
 TaskTrackerAppDelegate.m
@@ -639,6 +653,13 @@ file
 18
 michael
 
+SyncManager.h
+file
+0
+
+
+add
+
 DatePickerViewController.h
 file
 
@@ -686,6 +707,13 @@ bd9810038e3d19c51d41e85dd72eeea8
 2009-09-09T19:07:06.095398Z
 18
 michael
+
+SyncManager.m
+file
+0
+
+
+add
 
 WorkUnitCellView.h
 file
@@ -747,18 +775,6 @@ file
 18
 michael
 
-WorkUnitCell.h
-file
-
-
-
-
-2009-01-29T19:20:13.000000Z
-32091dc6b47bc231b89c1f5f8577d3a3
-2009-09-09T19:07:06.095398Z
-18
-michael
-
 WorkUnitCellView.m
 file
 
@@ -769,6 +785,18 @@ file
 e263d7fc7c5e14f5ac891a5775a99686
 2009-10-04T14:53:50.702784Z
 19
+michael
+
+WorkUnitCell.h
+file
+
+
+
+
+2009-01-29T19:20:13.000000Z
+32091dc6b47bc231b89c1f5f8577d3a3
+2009-09-09T19:07:06.095398Z
+18
 michael
 
 BeginEndEditViewController.m

@@ -8,6 +8,8 @@
 
 #import "Project.h"
 #import "ProjectTask.h"
+#import "TimeWorkUnit.h"
+#import "DataEntry.h"
 
 
 @implementation Project
@@ -105,6 +107,14 @@
 		}
 	}
 	return FALSE;
+}
+
+-(BOOL) matchFilter:(DataFilterType)filter
+{
+    for (ProjectTask* pt in self.tasks) {
+        if ([pt matchFilter:filter]) return TRUE;
+    }
+    return FALSE;
 }
 
 

@@ -22,6 +22,7 @@
 @property int selectedRow;
 @property (retain) UIBarButtonItem* addButtonItem;
 @property (retain) Project* project;
+@property (nonatomic, retain) NSMutableArray* data;
 
 - (void) addItem;
 - (void) editSelectedItem;

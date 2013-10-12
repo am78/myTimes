@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Model.h"
 
 @interface ProjectTask : NSObject <NSCoding> {
 	
@@ -44,6 +44,8 @@
 
 //returns a sorted array of this tasks work units. sorted by start date-time descending (from new to old)
 -(NSArray*) getWorkUnitsSorted;
+
+-(BOOL) matchFilter:(DataFilterType)filter;
 
 //returns the array of defined dataEntries
 //it contains values for all predefined DataEntry values

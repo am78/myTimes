@@ -10,6 +10,7 @@
 #import "TimeWorkUnit.h"
 #import "TaskTrackerAppDelegate.h"
 
+
 @implementation ProjectTask
 
 @synthesize name;
@@ -166,6 +167,14 @@
 -(NSArray*) getWorkUnitsSorted {
 	NSArray* sorted = [self.workUnits sortedArrayUsingSelector:@selector(compareByStartDate:)];
 	return sorted;
+}
+
+-(BOOL) matchFilter:(DataFilterType)filter
+{
+    for (TimeWorkUnit* wu in self.workUnits) {
+        if ([wu matchFilter:filter]) return TRUE;
+    }
+    return FALSE;
 }
 
 

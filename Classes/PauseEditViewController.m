@@ -34,22 +34,6 @@
 }
 
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,6 +52,19 @@
 	tvctl.picker = self.picker;	
 		
 	[self.view addSubview:tv];
+    
+    //create the save button
+	UIBarButtonItem *saveButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+																				 target:self action:@selector(save:)] autorelease];
+	//and add it to the navigation bar
+	self.navigationItem.rightBarButtonItem = saveButton;
+	
+	//create the cancel button
+	UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                   target:self action:@selector(cancel:)] autorelease];
+	//and add it to the navigation bar
+	self.navigationItem.leftBarButtonItem = cancelButton;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {

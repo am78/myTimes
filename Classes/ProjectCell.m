@@ -25,16 +25,6 @@
 	return self;
 }
 
-//- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-//	if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
-//		CGRect tzvFrame = CGRectMake(10.0, 0.0, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
-//		cellView = [[ProjectCellView alloc] initWithFrame:tzvFrame];
-//		cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//		[self.contentView addSubview:cellView];
-//	}
-//	return self;
-//}
-
 - (void)setProject:(Project*)aProject{
 	ProjectCellView* cv = (ProjectCellView*) cellView;
 	cv.project = aProject;

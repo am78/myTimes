@@ -121,18 +121,15 @@
     
     Project* p = [appDelegate.data objectAtIndex:indexPath.row];
 	cell.textLabel.text = p.name;
+    
+    //use checkmark if project is in list of project for export
+	if ([self.projectsForExport containsObject:p]) {
+		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+	} else {
+		cell.accessoryType = UITableViewCellAccessoryNone;
+	}
 	
     return cell;
-}
-
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	//return checkmark if project is in list of project for export
-	Project* p = [appDelegate.data objectAtIndex:indexPath.row];
-	if ([self.projectsForExport containsObject:p]) {
-		return UITableViewCellAccessoryCheckmark;
-	} else {
-		return UITableViewCellAccessoryNone;
-	}
 }
 
 

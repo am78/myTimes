@@ -34,40 +34,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/TimeWorkUnit.m"
-         timestampString = "320185815.515623"
-         startingColumnNumber = "2147483647"
-         endingColumnNumber = "2147483647"
-         startingLineNumber = "125"
-         endingLineNumber = "125"
-         landmarkName = "@implementation TimeWorkUnit"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Classes/TaskTrackerAppDelegate.m"
-         timestampString = "354040224.215815"
-         startingColumnNumber = "2147483647"
-         endingColumnNumber = "2147483647"
-         startingLineNumber = "699"
-         endingLineNumber = "699"
-         landmarkName = "-saveData"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/TaskTrackerAppDelegate.m"
-         timestampString = "354040224.215815"
-         startingColumnNumber = "2147483647"
-         endingColumnNumber = "2147483647"
-         startingLineNumber = "432"
-         endingLineNumber = "432"
+         timestampString = "392578067.366217"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "469"
+         endingLineNumber = "469"
          landmarkName = "-actionSheet:didDismissWithButtonIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -77,26 +49,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/TaskTrackerAppDelegate.m"
-         timestampString = "354040224.215815"
-         startingColumnNumber = "2147483647"
-         endingColumnNumber = "2147483647"
-         startingLineNumber = "254"
-         endingLineNumber = "254"
+         timestampString = "392578067.366217"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "277"
+         endingLineNumber = "277"
          landmarkName = "-importFromString:addAsNewProjects:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/TaskTrackerAppDelegate.m"
-         timestampString = "354040224.215815"
-         startingColumnNumber = "2147483647"
-         endingColumnNumber = "2147483647"
-         startingLineNumber = "322"
-         endingLineNumber = "322"
-         landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

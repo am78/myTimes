@@ -32,7 +32,7 @@
 		
 		//create show the start/stop button
 		self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		self.startStopButton.frame = CGRectMake(220, 10, 35, 35);
+		self.startStopButton.frame = CGRectMake(230, 10, 35, 35);
 		[self.startStopButton addTarget:self action:@selector(startStopButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[self.startStopButton setBackgroundImage:[UIImage imageNamed:@"play-btn.png"] forState:UIControlStateNormal];
 		
@@ -80,6 +80,9 @@
 	}
 	[self setNeedsDisplay];
 	[self updateButtonState];
+
+    //we need to persist the changes
+    [appDelegate saveData];
 }
 
 -(void) setWorkUnit:(TimeWorkUnit*)aWorkUnit {	

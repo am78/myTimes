@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
+#import "Model.h"
 #import "Project.h"
 #import "ProjectTask.h"
 #import "TimeWorkUnit.h"
-#import "RootViewController.h"
 #import "DataEntry.h"
 
 
@@ -43,6 +44,7 @@
     NSString* importFile;
 }
 
+
 - (void) toogleTableEditMode:(BOOL)editing;
 - (void) addProject:(Project*)aProject;
 - (void) addTask:(ProjectTask*)aTask;
@@ -54,6 +56,10 @@
 -(void) importFromString:(NSString*)sData   addAsNewProjects:(BOOL)addProjects;
 -(void) importFromXMLData:(NSData*)xmlData addAsNewProjects:(BOOL)addProjects;
 -(void) saveData;
+
+- (NSString*) getDataFilePath;
+
+- (NSMutableArray*) getDataFiltered:(DataFilterType) filterType;
 
 //imports projects from the obtained NSData
 - (void) importProjectFromData:(NSData*) importData;
@@ -85,6 +91,7 @@
 @property (retain) NSMutableArray* dataToRestore;
 @property (retain) NSString* restoreFilePath;
 @property (nonatomic, retain) NSString* importFile;
+@property DataFilterType filterType;
 
 @end
 

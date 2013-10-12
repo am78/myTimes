@@ -1,354 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
-	<data>
-		<int key="IBDocument.SystemTarget">528</int>
-		<string key="IBDocument.SystemVersion">11G63</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
-		<string key="IBDocument.AppKitVersion">1138.51</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1930</string>
-		</object>
-		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBProxyObject</string>
-			<string>IBUIActivityIndicatorView</string>
-			<string>IBUIButton</string>
-			<string>IBUITableViewCell</string>
-			<string>IBUIView</string>
-		</object>
-		<object class="NSArray" key="IBDocument.PluginDependencies">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
-			<integer value="1" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="IBProxyObject" id="372490531">
-				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBProxyObject" id="975951072">
-				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUIView" id="191373211">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
-				<object class="NSMutableArray" key="NSSubviews">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUITableViewCell" id="685942088">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<object class="NSMutableArray" key="NSSubviews">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIView" id="831651597">
-								<reference key="NSNextResponder" ref="685942088"/>
-								<int key="NSvFlags">256</int>
-								<object class="NSMutableArray" key="NSSubviews">
-									<bool key="EncodedWithXMLCoder">YES</bool>
-									<object class="IBUIButton" id="910323438">
-										<reference key="NSNextResponder" ref="831651597"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{146, 11}, {154, 35}}</string>
-										<reference key="NSSuperview" ref="831651597"/>
-										<object class="NSColor" key="IBUIBackgroundColor">
-											<int key="NSColorSpace">2</int>
-											<bytes key="NSRGB">MSAwLjA5MDE5NjA4MSAwLjAzNTI5NDExOSAwAA</bytes>
-										</object>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<string key="IBUIHighlightedTitle">Delete</string>
-										<string key="IBUIDisabledTitle">Delete</string>
-										<string key="IBUISelectedTitle">Delete</string>
-										<string key="IBUINormalTitle">Löschen</string>
-										<object class="NSColor" key="IBUIHighlightedTitleColor" id="547827388">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MQA</bytes>
-											<object class="NSColorSpace" key="NSCustomColorSpace" id="152545441">
-												<int key="NSID">2</int>
-											</object>
-										</object>
-										<reference key="IBUIDisabledTitleColor" ref="547827388"/>
-										<reference key="IBUISelectedTitleColor" ref="547827388"/>
-										<reference key="IBUINormalTitleColor" ref="547827388"/>
-										<object class="NSColor" key="IBUIHighlightedTitleShadowColor" id="338208626">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MAA</bytes>
-										</object>
-										<reference key="IBUIDisabledTitleShadowColor" ref="338208626"/>
-										<reference key="IBUISelectedTitleShadowColor" ref="338208626"/>
-										<reference key="IBUINormalTitleShadowColor" ref="338208626"/>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="562136955">
-											<string key="name">Helvetica-Bold</string>
-											<string key="family">Helvetica</string>
-											<int key="traits">2</int>
-											<double key="pointSize">15</double>
-										</object>
-										<object class="NSFont" key="IBUIFont" id="125667780">
-											<string key="NSName">Helvetica-Bold</string>
-											<double key="NSSize">15</double>
-											<int key="NSfFlags">16</int>
-										</object>
-									</object>
-									<object class="IBUIButton" id="938220120">
-										<reference key="NSNextResponder" ref="831651597"/>
-										<int key="NSvFlags">-2147483356</int>
-										<string key="NSFrame">{{20, 15}, {30, 30}}</string>
-										<reference key="NSSuperview" ref="831651597"/>
-										<bool key="IBUIOpaque">NO</bool>
-										<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-										<bool key="IBUIUserInteractionEnabled">NO</bool>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<object class="NSColor" key="IBUIHighlightedTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MSAxIDEAA</bytes>
-										</object>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="338208626"/>
-										<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="46620">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">play-btn.png</string>
-										</object>
-										<reference key="IBUIDisabledBackgroundImage" ref="46620"/>
-										<reference key="IBUISelectedBackgroundImage" ref="46620"/>
-										<reference key="IBUINormalBackgroundImage" ref="46620"/>
-										<reference key="IBUIFontDescription" ref="562136955"/>
-										<reference key="IBUIFont" ref="125667780"/>
-									</object>
-									<object class="IBUIActivityIndicatorView" id="1065923363">
-										<reference key="NSNextResponder" ref="831651597"/>
-										<int key="NSvFlags">-2147483356</int>
-										<string key="NSFrame">{{64, 19}, {20, 20}}</string>
-										<reference key="NSSuperview" ref="831651597"/>
-										<bool key="IBUIOpaque">NO</bool>
-										<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-										<bool key="IBUIUserInteractionEnabled">NO</bool>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<int key="IBUIStyle">2</int>
-									</object>
-								</object>
-								<string key="NSFrameSize">{320, 58}</string>
-								<reference key="NSSuperview" ref="685942088"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MCAwAA</bytes>
-								</object>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">4</int>
-								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							</object>
-						</object>
-						<string key="NSFrameSize">{320, 59}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MSAwAA</bytes>
-						</object>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUIContentView" ref="831651597"/>
-					</object>
-				</object>
-				<string key="NSFrameSize">{399, 148}</string>
-				<reference key="NSSuperview"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MSAwAA</bytes>
-					<reference key="NSCustomColorSpace" ref="152545441"/>
-				</object>
-				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-					<int key="IBUIInterfaceOrientation">3</int>
-					<int key="interfaceOrientation">3</int>
-				</object>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-		</object>
-		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<object class="NSMutableArray" key="connectionRecords">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">playPauseDeleteView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="191373211"/>
-					</object>
-					<int key="connectionID">10</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">actIndicator</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1065923363"/>
-					</object>
-					<int key="connectionID">14</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">startStopButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="938220120"/>
-					</object>
-					<int key="connectionID">15</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">deleteButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="910323438"/>
-					</object>
-					<int key="connectionID">16</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">startBtnPressed:</string>
-						<reference key="source" ref="938220120"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">12</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">deleteBtnPressed:</string>
-						<reference key="source" ref="910323438"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">11</int>
-				</object>
-			</object>
-			<object class="IBMutableOrderedSet" key="objectRecords">
-				<object class="NSArray" key="orderedObjects">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBObjectRecord">
-						<int key="objectID">0</int>
-						<object class="NSArray" key="object" id="360949347">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="children" ref="1000"/>
-						<nil key="parent"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1</int>
-						<reference key="object" ref="191373211"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="685942088"/>
-						</object>
-						<reference key="parent" ref="360949347"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-1</int>
-						<reference key="object" ref="372490531"/>
-						<reference key="parent" ref="360949347"/>
-						<string key="objectName">File's Owner</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-2</int>
-						<reference key="object" ref="975951072"/>
-						<reference key="parent" ref="360949347"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">3</int>
-						<reference key="object" ref="685942088"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="938220120"/>
-							<reference ref="910323438"/>
-							<reference ref="1065923363"/>
-						</object>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="938220120"/>
-						<reference key="parent" ref="685942088"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">6</int>
-						<reference key="object" ref="910323438"/>
-						<reference key="parent" ref="685942088"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">13</int>
-						<reference key="object" ref="1065923363"/>
-						<reference key="parent" ref="685942088"/>
-					</object>
-				</object>
-			</object>
-			<object class="NSMutableDictionary" key="flattenedProperties">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="NSArray" key="dict.sortedKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>-1.CustomClassName</string>
-					<string>-1.IBPluginDependency</string>
-					<string>-2.CustomClassName</string>
-					<string>-2.IBPluginDependency</string>
-					<string>1.IBPluginDependency</string>
-					<string>13.IBPluginDependency</string>
-					<string>3.IBPluginDependency</string>
-					<string>5.IBPluginDependency</string>
-					<string>6.IBPluginDependency</string>
-				</object>
-				<object class="NSArray" key="dict.values">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>WorkUnitDetailsTableViewController</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>UIResponder</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				</object>
-			</object>
-			<object class="NSMutableDictionary" key="unlocalizedProperties">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<reference key="dict.sortedKeys" ref="360949347"/>
-				<reference key="dict.values" ref="360949347"/>
-			</object>
-			<nil key="activeLocalization"/>
-			<object class="NSMutableDictionary" key="localizations">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<reference key="dict.sortedKeys" ref="360949347"/>
-				<reference key="dict.values" ref="360949347"/>
-			</object>
-			<nil key="sourceID"/>
-			<int key="maxID">16</int>
-		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
-		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<integer value="528" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
-			<integer value="3000" key="NS.object.0"/>
-		</object>
-		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">play-btn.png</string>
-			<string key="NS.object.0">{55, 55}</string>
-		</object>
-		<string key="IBCocoaTouchPluginVersion">1930</string>
-	</data>
-</archive>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="528" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkUnitDetailsTableViewController">
+            <connections>
+                <outlet property="actIndicator" destination="13" id="14"/>
+                <outlet property="deleteButton" destination="6" id="16"/>
+                <outlet property="playPauseDeleteView" destination="1" id="10"/>
+                <outlet property="startStopButton" destination="5" id="15"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="148"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableViewCell opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="3">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3" id="7Wr-pm-cGN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6">
+                                <rect key="frame" x="146" y="11" width="154" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.090196080999999997" blue="0.035294118999999999" alpha="0.0" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <state key="normal" title="Löschen">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteBtnPressed:" destination="-1" eventType="touchUpInside" id="11"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5">
+                                <rect key="frame" x="20" y="15" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <state key="normal" backgroundImage="play-btn.png">
+                                    <color key="titleColor" red="0.19607843" green="0.30980393000000001" blue="0.52156866000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled" backgroundImage="play-btn.png"/>
+                                <state key="selected" backgroundImage="play-btn.png"/>
+                                <state key="highlighted" backgroundImage="play-btn.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startBtnPressed:" destination="-1" eventType="touchUpInside" id="12"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="13">
+                                <rect key="frame" x="64" y="19" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                    </tableViewCellContentView>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                </tableViewCell>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="play-btn.png" width="55" height="55"/>
+    </resources>
+</document>

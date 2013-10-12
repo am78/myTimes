@@ -14,4 +14,6 @@
 
 +(NSString*) getXmlData:(NSArray*)projects;
 
++(NSString*) getAllXmlData:(NSArray*)projects;
+
 @end

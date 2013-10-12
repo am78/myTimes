@@ -9,6 +9,7 @@
 #import "TimeWorkUnit.h"
 #import "TaskTrackerAppDelegate.h"
 #import "TextEditViewController.h"
+#import "Model.h"
 
 @implementation TimeWorkUnit
 
@@ -21,6 +22,7 @@
 @synthesize running;
 @synthesize markedForExport;
 @synthesize paused;
+@synthesize processed;
 
 
 // writes ourselves out to an NSCoder
@@ -31,7 +33,8 @@
 	[coder encodeObject:pause];
 	[coder encodeObject:chargeable];
 	[coder encodeObject:[NSNumber numberWithInt:running]];
-	[coder encodeObject:[NSNumber numberWithInt:paused]];	
+	[coder encodeObject:[NSNumber numberWithInt:paused]];
+	[coder encodeObject:[NSNumber numberWithInt:processed]];
 }
 
 
@@ -51,7 +54,10 @@
 	if (nrPaused != nil) {
 		paused = [nrPaused boolValue];
 	} 
-	
+	NSNumber* nrProc = [[coder decodeObject] retain];
+	if (nrProc != nil) {
+		processed = [nrProc boolValue];
+	}
 	
 	return self;
 }
@@ -66,6 +72,7 @@
 		self.chargeable = [NSNumber numberWithBool:TRUE]; //as default the work unit is chargeable
 		self.running = FALSE;
 		self.paused = FALSE;
+        self.processed = FALSE;
 	}
 	return self;
 }
@@ -221,6 +228,20 @@
 	return NSOrderedSame;
 }
 
+-(BOOL) matchFilter:(DataFilterType)filter
+{
+    switch (filter) {
+        case FilterType_NotProcessed:
+            return !self.processed;
+        case FilterType_Processed:
+            return self.processed;
+        case FilterType_Unfiltered:
+            return true;
+        default:
+            return true;
+    }
+}
+
 -(TimeWorkUnit*) copy {
 	TimeWorkUnit* copy = [[TimeWorkUnit alloc] init];
 	copy.duration =  [duration copy];
@@ -229,6 +250,7 @@
 	copy.description = [description copy];
 	copy.running = self.running;
 	copy.chargeable = [self.chargeable copy];
+    copy.processed = self.processed;
 	return copy;
 }
 

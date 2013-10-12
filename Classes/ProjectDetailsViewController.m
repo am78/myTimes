@@ -11,6 +11,7 @@
 #import "TaskCell.h"
 #import "TableRowSelectionDelegate.h"
 #import "TaskEditViewController2.h"
+#import "NSArray+Filter.h"
 
 #define ROW_HEIGHT 60
 
@@ -19,6 +20,7 @@
 @synthesize project;
 @synthesize addButtonItem;
 @synthesize selectedRow;
+@synthesize data;
 
 //editing a project task either in edit mode or in creation mode
 - (void) editTask:(ProjectTask*)pt editMode:(BOOL)editMode {
@@ -31,15 +33,25 @@
 		ctl.editMode = editMode;
 		ctl.parentTable = self.tableView;
 		//show details controller as modal controller
-		[self.navigationController presentModalViewController:ctl animated:YES];
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ctl];
+        nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:nc animated:YES];
+        [nc release];
+        
+        [ctl release];
+        
 	} 
 	//edit selected task
 	else {
 		TaskEditViewController2* ctl = [[TaskEditViewController2 alloc] initWithNibName:@"TaskEditViewController2" bundle:nil];
 		ctl.task = pt;
-		
-		//show details controller as modal controller
-		[self.navigationController pushViewController:ctl animated:YES];
+        
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ctl];
+        nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:nc animated:YES];
+        [nc release];
+        
+        [ctl release];
 	}
 }
 
@@ -68,6 +80,8 @@
 
 	TaskTrackerAppDelegate* appDelegate = (TaskTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
 
+    self.data = self.project.tasks;
+    
 	//setting row height of each row to 60
 	UITableView* table = self.tableView;
 	table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -92,6 +106,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
+    
 	selectedRow = -1;
     [super viewWillAppear:animated];
 	//set current table view in appDelegate to be able to edit all the tables on the views with a unique mechanism
@@ -129,32 +144,6 @@
 	[appDelegate.rootViewController enabledGlobalButtons:!editing sender:self];
  }
 
-/*
-- (void)viewDidAppear:(BOOL)animated {
-	TaskTrackerAppDelegate* appDelegate = (TaskTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
-	appDelegate.projectDetailsViewCtl = self;
-    [super viewDidAppear:animated];
-}
- */
-
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -179,18 +168,15 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 1;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	//return number of tasks for the current project
-	if (section == 0) {
-		return [[self.project tasks] count];
-	} else {
-		return 0;
-	}
+    return [self.data count];
+	
 }
 
 
@@ -204,7 +190,7 @@
 	}
 	
 	//set the project task element in the cell view
-	ProjectTask* pt = [[self.project tasks] objectAtIndex:[indexPath row]];
+	ProjectTask* pt = [self.data objectAtIndex:[indexPath row]];
 	if (pt != nil) {
 		taskCell.task = pt;
 		[taskCell setRow:[indexPath row]];
@@ -234,7 +220,7 @@
 	if (!self.tableView.editing) {
 		//Teilprojekt selektiert, Details zum Teilprojekt anzeigen (Zeiten)
 		//the selected task
-		ProjectTask* t = [[self.project tasks] objectAtIndex:[indexPath row]];
+		ProjectTask* t = [self.data objectAtIndex:[indexPath row]];
 		NSLog(@"start editing task: %@", t.name);
 		//ProjectDetailsView erzeugen und anzeigen
 		WorkUnitsListViewController* workUnitsViewCtl = [[WorkUnitsListViewController alloc] initWithNibName:@"WorkUnitsListView" bundle:nil];
@@ -248,42 +234,14 @@
 		//Im EditModus selektiert, also teilprojekt editieren
 		[appDelegate.addItemController editSelectedItem];
 	}
-	
-	//[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-
-/*
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	//the selected task
-	ProjectTask* t = [[self.project tasks] objectAtIndex:[indexPath row]];
-	
-	NSLog(@"start editing task: %@", t.name);
-	
-	//ProjectDetailsView erzeugen und anzeigen
-	WorkUnitsListViewController* workUnitsViewCtl = [[WorkUnitsListViewController alloc] initWithNibName:@"WorkUnitsListView" bundle:nil];
-	//set task in workunitlistview
-	workUnitsViewCtl.task = t;
-	workUnitsViewCtl.parentProject = self.project;
-	
-	workUnitsViewCtl.parentTable = self.tableView;
-	
-	[self.navigationController pushViewController:workUnitsViewCtl animated:YES];
-}
- */
-
-// The accessory type is the image displayed on the far right of each table cell. In order for the delegate method
-// tableView:accessoryButtonClickedForRowWithIndexPath: to be called, you must return the "Detail Disclosure Button" type.
-//- (UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-//    return UITableViewCellAccessoryDisclosureIndicator;
-//}
-
 
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	//check if the task is editable
-	if (indexPath.row < [[self.project tasks] count]) {
+	if (indexPath.row < [self.data count]) {
 		ProjectTask* task = [[self.project tasks] objectAtIndex:indexPath.row];
 		if (task.userChangeable) {
 			return YES;
@@ -299,7 +257,7 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-		ProjectTask* t = [[self.project tasks] objectAtIndex:[indexPath row]];
+		ProjectTask* t = [self.data objectAtIndex:[indexPath row]];
 		[[self.project tasks] removeObject:t];
 		//delete the row from table view
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
@@ -315,7 +273,7 @@
 
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-	NSMutableArray* array = project.tasks;
+	NSMutableArray* array = self.data;
 	NSUInteger fromRow = [fromIndexPath row];
 	NSUInteger toRow = [toIndexPath row];
 	id object = [[array objectAtIndex:fromRow] retain];

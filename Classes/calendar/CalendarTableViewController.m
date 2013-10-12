@@ -24,37 +24,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	NSLog(@"viewWillAppear");
 	CalendarTableView* tv = (CalendarTableView*)self.tableView;
 	[[tv calendarDelegate] clearCachedData];
 	
 	self.titleTxt = [self getTitleText];
 	//set navigation item title
-	CGRect f = CGRectMake(0,0,320, 100);
-	titleLbl = [[UILabel alloc] initWithFrame:f];
-	titleLbl.textAlignment = UITextAlignmentCenter;
-	titleLbl.backgroundColor = [UIColor clearColor];
-	titleLbl.textColor = [UIColor whiteColor];
-	titleLbl.font = [UIFont boldSystemFontOfSize:14];
-	self.navigationItem.titleView = titleLbl;
-	titleLbl.text = self.titleTxt;
+	self.navigationItem.title = self.titleTxt;
 	
 	//create and left and right buttons to navigation bar
-	UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-	button.bounds = CGRectMake(0, 0, 65.0, 30.0);
-	[button setImage:[UIImage imageNamed:@"left-arrow.png"] forState:UIControlStateNormal];
-	[button addTarget:self action:@selector(loadPrev:) forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-	
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
+                                                                                   target:self action:@selector(loadPrev:)] ;
 	[self.navigationItem setLeftBarButtonItem:leftItem animated:FALSE];
 	[leftItem release];
 	
-	button = [UIButton buttonWithType:UIButtonTypeCustom];
-	button.bounds = CGRectMake(0, 0, 65.0, 30.0);
-	[button setImage:[UIImage imageNamed:@"right-arrow.png"] forState:UIControlStateNormal];
-	[button addTarget:self action:@selector(loadNext:) forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-	
+	UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
+                                                                                   target:self action:@selector(loadNext:)];
 	[self.navigationItem setRightBarButtonItem:rightItem animated:FALSE];
 	[rightItem release];
 }
@@ -71,12 +55,7 @@
 
 //closing the calendar view requested
 -(void) closeCalendarView:(id)sender {
-	//display the toolbar
-	TaskTrackerAppDelegate*	appDelegate = (TaskTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate.rootViewController initToolbar];
-	//close calendar view
-	[self.navigationController popViewControllerAnimated:TRUE];
-
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 //show the day +/- n Days from current date in calendar view
@@ -124,13 +103,15 @@
 	[toolbar setFrame:rectArea];
 	
 	//create the close button
-	UIBarButtonItem* exitButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"backButtonLabelKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(closeCalendarView:)];
+    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                   target:self
+                                                                                 action:@selector(closeCalendarView:)] ;
 	
 	//space between buttons
 	UIBarButtonItem* flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace  target:nil action:nil];
 	
 	//Add buttons to toolbar
-	[toolbar setItems:[NSArray arrayWithObjects:exitButton, flexButton, nil]];
+	[toolbar setItems:[NSArray arrayWithObjects:flexButton, exitButton, nil]];
 	
 	//Add the toolbar as a subview to the navigation controller.
 	[footer addSubview:toolbar];

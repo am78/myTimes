@@ -25,16 +25,6 @@
 	return self;    
 }
 
-//- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-//	if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
-//		CGRect tzvFrame = CGRectMake(10.0, 0.0, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
-//		cellView = [[WorkUnitCellView alloc] initWithFrame:tzvFrame];
-//		cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//		[self.contentView addSubview:cellView];
-//	}
-//	return self;
-//}
-
 - (void)setWorkUnit:(TimeWorkUnit*)wu {
 	WorkUnitCellView* cv = (WorkUnitCellView*) cellView;
 	cv.workUnit = wu;

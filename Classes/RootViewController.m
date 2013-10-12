@@ -24,6 +24,7 @@
 #import "TimeEntryViewController.h"
 #import "NSDataAddition.h"
 #import "ImportUrlViewController.h"
+#import "TaskTrackerAppDelegate.h"
 
 @implementation RootViewController
 
@@ -57,15 +58,15 @@
 	calView.dataSource = calCtl;
 	calView.calendarDelegate = self; //CalendarTableViewDelegate is implemented by this class
 	
-	//show calendar view
-	[self.navigationController pushViewController:calCtl animated:YES];
+    //present the workunitdetails controller as an modal controller with an own navigation controller (for the nav bar)
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:calCtl];
+    nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:nc animated:YES];
+    [nc release];
 	
 	//release resources
 	[calCtl release];
 	[calView release];
-	
-	//hide the toolbar
-	[toolbar setHidden:TRUE];	
 }
 
 //popups the ImportUrlInpit view
@@ -77,8 +78,96 @@
 	//release controller
 	[ctl release];
 }
-#pragma mark -
-#pragma mark AlertView mwthods
+
+//display the filter selection action view
+- (IBAction)filterButtonPressed:(id)sender {    
+    UIActionSheet* as = [[UIActionSheet alloc] initWithTitle:@"Filter einstellen" delegate:self
+                                           cancelButtonTitle:@"Abbrechen" destructiveButtonTitle:nil
+                                           otherButtonTitles:@"Abgerechnet", @"Nicht abgerechnet", @"Alles", nil];
+    
+    [as showFromBarButtonItem:self.filterButton animated:true];
+    
+}
+
+
+- (IBAction)syncButtonPressed:(id)sender {
+    //link to dropbox
+    [self.syncManager initSync:self];
+}
+
+- (IBAction)settingsButtonPressed:(id)sender {
+    
+    //check whether dropbox is enabled (account is linked)
+    DBAccount *account =     [DBAccountManager sharedManager].linkedAccount;
+    BOOL dropboxSync = account != nil;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:dropboxSync forKey:@"dropboxSync"];
+    
+    IASKAppSettingsViewController* ctl = [[IASKAppSettingsViewController alloc] init];
+    ctl.delegate = self;
+    UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:ctl];
+    //[viewController setShowCreditsFooter:NO]; // Uncomment to not display InAppSettingsKit credits for creators.
+    // But we encourage you not to uncomment. Thank you!
+    ctl.showDoneButton = YES;
+    [self presentModalViewController:aNavController animated:YES];
+    [aNavController release];
+}
+
+
+#pragma mark - IASKAppSettingsViewControllerDelegate protocol
+- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender {
+   
+    BOOL dbsync = [sender.settingsStore boolForKey:@"dropboxSync"];
+    DBAccount *account = [DBAccountManager sharedManager].linkedAccount;
+    if (dbsync) {
+        //DBSync shall be enbled, needs to be done when no linked account exists
+        if (!account) {
+            //link to DB account
+            [self.syncManager initSync:sender];
+        }
+    }
+    else {
+        //disable DBSync(unlick account) when disabled and account is already linked
+        if (account) {
+            //TODO ask user to do so, provide abort option
+            //unlink DB account
+            [self.syncManager unlinkAccount];
+        }
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
+#pragma mark - ActionSheetDelegate methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        //display only processed items
+        self.data = [appDelegate getDataFiltered:FilterType_Processed];
+        [self.tableView reloadData];
+        appDelegate.filterType = FilterType_Processed;
+    }
+    else if (buttonIndex == 1) {
+        //display only not processed items
+        self.data = [appDelegate getDataFiltered:FilterType_NotProcessed];
+        [self.tableView reloadData];
+        appDelegate.filterType = FilterType_NotProcessed;
+    }
+    else if (buttonIndex == 2) {
+        //display all items
+        self.data = [appDelegate getDataFiltered:FilterType_Unfiltered];
+        [self.tableView reloadData];
+        appDelegate.filterType = FilterType_Unfiltered;
+    }
+    else {
+        ; //Do Nothing
+    }
+}
+
+
+#pragma mark - AlertView mwthods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	/*if (buttonIndex == 2) return;
 	else {
@@ -102,12 +191,15 @@
 	ctl.startDate = startDate;
 	ctl.endDate = [NSDate date];		
 	ctl.projectsToExport = [NSMutableArray arrayWithArray:self.data];
+
+    //present the workunitdetails controller as an modal controller with an own navigation controller (for the nav bar)
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ctl];
+    nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:nc animated:YES];
+    [nc release];
 	
-//	settingsController = ctl;
-	
-	[self.navigationController pushViewController:ctl animated:TRUE];
-	//[self presentModalViewController:ctl animated:TRUE];
-	[ctl release];	
+//    [self.navigationController pushViewController:ctl animated:TRUE];
+	[ctl release];
 }
 
 //create the mail form with the data to export and let the user enter the receiver adress and send the mail
@@ -264,8 +356,12 @@
 	//set project in controller
 	ctl.project = p;
 	ctl.isInEditMode = editMode;
-	//show details controller as modal controller
-	[self.navigationController presentModalViewController:ctl animated:YES];
+    
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ctl];
+    nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:nc animated:YES];
+    [nc release];
+    
 	[ctl release];
 }
 
@@ -294,7 +390,8 @@
 	}
 	
 	//create WorkUnitEditView
-	WorkUnitDetailsTableViewController* ctl = [[WorkUnitDetailsTableViewController alloc] initWithNibName:@"WorkUnitDetailsView" bundle:nil];
+	WorkUnitDetailsTableViewController* ctl = [[WorkUnitDetailsTableViewController alloc]
+                                               initWithNibName:@"WorkUnitDetailsView" bundle:nil];
 	//tell the controller that we only edit an existing work unit
 	ctl.workUnitAddMode = TRUE;
 	
@@ -318,10 +415,14 @@
 	ctl.workUnit = wu;
 	//set parent table to reload table view after WorkUnit creation
 	ctl.parentTable = appDelegate.currentTableView;
+    
+    //present the workunitdetails controller as an modal controller with an own navigation controller (for the nav bar)
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ctl];
+    nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:nc animated:YES];
+    [nc release];
 
-	//popup the view controller
-	[self.navigationController pushViewController:ctl animated:YES];	
-	[ctl release];	
+	[ctl release];
 }
 
 
@@ -384,11 +485,12 @@
 	editElementButtonItem.enabled = enabled;
 	calButtonItem.enabled = enabled;
 	newWorkUnitButton.enabled = enabled;
+    self.filterButton.enabled = enabled;
 	//email&import button is only in project view enabled
-	if (sender == self) {
+//	if (sender == self) {
 		emailButtonItem.enabled = enabled;
-		importButtonItem.enabled = enabled;
-	}
+//		importButtonItem.enabled = enabled;
+//	}
 }
 
 - (void)viewDidLoad {
@@ -400,12 +502,29 @@
 	table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 	table.rowHeight = ROW_HEIGHT;
     
-	self.navigationItem.rightBarButtonItem = self.editButtonItem;	
+	self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+//    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+//    if ([[ver objectAtIndex:0] intValue] >= 7) {
+//        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:89/255.0f green:174/255.0f blue:235/255.0f alpha:1.0f];
+//        self.navigationController.navigationBar.translucent = NO;
+//    }else{
+//        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:89/255.0f green:174/255.0f blue:235/255.0f alpha:1.0f];
+//    }
+    
 	appDelegate = (TaskTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	[self initToolbar];
+
+    //init the dropbox sync manager and start observer
+    self.syncManager = [[SyncManager alloc] init];
+    [self.syncManager startObserver];
 		
+}
+
+- (void) syncChanges:(NSData*) theData
+{
+    [self.syncManager syncChanges:theData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -465,14 +584,17 @@
 	// der button soll in der Navigationsleiste zu sehen sein
 	// also erstellen wir aus dem button ein UIBarButtonItem Objekt um dieses auf der Navigationsleiste abzulegen
 	UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-	
-	
+	    
 	//space between buttons
 	UIBarButtonItem* flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace  target:nil action:nil];
-	UIBarButtonItem* flexButton2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace  target:nil action:nil];	
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 10;
+    
+
 	
 	//Button created in RootViewController.xib
-	[toolbar setItems:[NSArray arrayWithObjects:newWorkUnitButton, addButtonItem, calButtonItem, emailButtonItem, importButtonItem, flexButton, flexButton2, infoButtonItem, nil]];
+	[toolbar setItems:[NSArray arrayWithObjects:newWorkUnitButton, fixedSpace, addButtonItem, fixedSpace,  calButtonItem, fixedSpace, emailButtonItem,
+                       flexButton, self.settingsButtonItem, nil]];
 	
 	//Add the toolbar as a subview to the navigation controller.
 	[self.navigationController.view addSubview:toolbar];
@@ -481,10 +603,10 @@
 	// dadurch können wir den Anspruch auf den "Besitz" dessen abgeben
 	[infoButtonItem release];
 	[flexButton release];
-	[flexButton2 release];
+	[fixedSpace release];
 	
-	[emailButtonItem setEnabled:FALSE];
-	[importButtonItem setEnabled:FALSE];	
+//	[emailButtonItem setEnabled:FALSE];
+	[importButtonItem setEnabled:FALSE];
 }	
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -527,8 +649,8 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-	[emailButtonItem setEnabled:FALSE];
-	[importButtonItem setEnabled:FALSE];	
+//	[emailButtonItem setEnabled:FALSE];
+	[importButtonItem setEnabled:FALSE];
 	[super viewWillDisappear:animated];
 }
 
@@ -660,7 +782,7 @@ NSInteger calItemTimeSort(id obj0, id obj1, void *reverse) {
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 1;
 }
 
 
@@ -817,7 +939,18 @@ NSInteger calItemTimeSort(id obj0, id obj1, void *reverse) {
 	} else return NO;
 }
 
+- (void)viewDidUnload {
+    [self setFilterButton:nil];
+    [self setFilterButton:nil];
+    [self setSettingsButtonItem:nil];
+    [super viewDidUnload];
+}
+
+#pragma mark - memory management
+
 - (void)dealloc {
+    [self.syncManager removeObserver];
+    [self.syncManager release];
 	[editElementButtonItem release];
 	[addButtonItem release];
 	[data release]; 
@@ -828,6 +961,9 @@ NSInteger calItemTimeSort(id obj0, id obj1, void *reverse) {
 	[helpButtonItem release]; 
 	[newWorkUnitButton release];
 	[importButtonItem release];
+    [_filterButton release];
+    [_filterButton release];
+    [_settingsButtonItem release];
     [super dealloc];
 }
 

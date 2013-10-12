@@ -49,7 +49,13 @@
 	//set parent table to reload table view after WorkUnit creation
 	ctl.parentController = self;
 	//popup the view controller
-	[self.navigationController pushViewController:ctl animated:YES];	
+
+    //present the details controller as a modal controller with an own navigation controller (for the nav bar)
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:ctl];
+    navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:navController animated:YES];
+    [navController release];
+    
 	[ctl release];
 }
 
@@ -290,7 +296,9 @@ NSInteger dateSortDescending(NSDate* d0, NSDate* d1, void *context) {
 		cell.workUnit = w;
 		[cell setRow:[indexPath row]];
 		[cell setCtl:self];		
-	}		
+	}
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }
 
@@ -363,9 +371,9 @@ NSInteger dateSortDescending(NSDate* d0, NSDate* d1, void *context) {
 }
 
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-	return [self getSectionIndexTitles];
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+//	return [self getSectionIndexTitles];
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
 	int i=0;
