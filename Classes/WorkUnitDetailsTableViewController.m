@@ -131,12 +131,12 @@
 		return;
 	}
 	
-	//put values from working copy to real work unit element
-	workUnit.date = wuCopy.date;
-	workUnit.pause = wuCopy.pause;
-	workUnit.description = wuCopy.description;
-	workUnit.duration = wuCopy.duration;
-	workUnit.running = wuCopy.running;
+    //put values from working copy to real work unit element
+    workUnit.date = wuCopy.date;
+    workUnit.pause = wuCopy.pause;
+    workUnit.description = wuCopy.description;
+    workUnit.duration = wuCopy.duration;
+    workUnit.running = wuCopy.running;
     workUnit.processed = self.processedSwitch.on;
 	
 	//if parent task changed remove workunit from the old task and add it to the new one
@@ -156,7 +156,10 @@
 	if ([self.parentController isKindOfClass:WorkUnitsListViewController.class]) {
 		WorkUnitsListViewController* c = (WorkUnitsListViewController*) self.parentController;
 		[c reload];
-	} else 	[self.parentTable reloadData];
+	}
+    else {
+        [self.parentTable reloadData];
+    }
 
 	
 	//leave the vieew

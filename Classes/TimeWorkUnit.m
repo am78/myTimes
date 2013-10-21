@@ -211,8 +211,15 @@
 		ctl.navigationItem.title = @"Beschreibung";
 		ctl.title = @"Beschreibung";
 		ctl.workUnit = self;
-		[appDelegate.rootViewController presentModalViewController:ctl animated:TRUE];
-				ctl.title = @"Beschreibung";
+        
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ctl];
+        nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [appDelegate.rootViewController presentModalViewController:nc animated:YES];
+        [nc release];
+        
+//		[appDelegate.rootViewController presentModalViewController:ctl animated:TRUE];
+
+        ctl.title = @"Beschreibung";
 		[ctl release];
 		
 	}

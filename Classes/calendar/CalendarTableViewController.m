@@ -21,26 +21,56 @@
 }
 
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self refreshData];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
 	CalendarTableView* tv = (CalendarTableView*)self.tableView;
 	[[tv calendarDelegate] clearCachedData];
 	
 	self.titleTxt = [self getTitleText];
-	//set navigation item title
-	self.navigationItem.title = self.titleTxt;
-	
-	//create and left and right buttons to navigation bar
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
-                                                                                   target:self action:@selector(loadPrev:)] ;
-	[self.navigationItem setLeftBarButtonItem:leftItem animated:FALSE];
-	[leftItem release];
-	
-	UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
-                                                                                   target:self action:@selector(loadNext:)];
-	[self.navigationItem setRightBarButtonItem:rightItem animated:FALSE];
-	[rightItem release];
+
+    //create segmnet control with << and >> buttons
+    NSArray *items = [NSArray arrayWithObjects: @"<<", @">>", nil];
+    UISegmentedControl* segment = [[UISegmentedControl alloc] initWithItems:items];
+    segment.frame = CGRectMake(0, 0, 60, 25);
+    segment.segmentedControlStyle = UISegmentedControlStylePlain;
+    segment.momentary = TRUE;
+    [segment addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
+    
+    //create customt left button with segment (<< >>) control
+    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithCustomView:segment];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    [segment release];
+    
+    //create Done button
+    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                    target:self action:@selector(closeCalendarView:)];
+    self.navigationItem.rightBarButtonItem = exitButton;
+
+    //set title
+    self.navigationItem.title = self.titleTxt;
+    
+}
+
+//Action method executes when user touches the button
+-(void) segmentSelected:(id)sender{
+    //goto next/prev day
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    int idx = [segmentedControl selectedSegmentIndex];
+    if (idx == 0) {
+        [self loadPrev:sender];
+    }
+    else {
+        [self loadNext:sender];
+    }
+    //update title text
+    self.navigationItem.title = [self getTitleText];
 }
 
 -(void) loadPrev:(id)sender {
@@ -80,7 +110,9 @@
 	titleLbl.text = self.titleTxt;
 }
 
+
 //create the Footer toolbar with close button
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 	UIView* footer = [[[UIView alloc] initWithFrame:CGRectMake(0, 450, 320, 30)] autorelease];
 	footer.alpha = 1.0;
@@ -105,7 +137,7 @@
 	//create the close button
     UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                    target:self
-                                                                                 action:@selector(closeCalendarView:)] ;
+                                                                                 action:@selector(closeCalendarView:)];
 	
 	//space between buttons
 	UIBarButtonItem* flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace  target:nil action:nil];
@@ -120,9 +152,10 @@
 	[exitButton release];
 	[flexButton release];
 	[toolbar release];
-		
+    
 	return footer;
 }
+ */
 
  
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -141,29 +174,6 @@
 	return [NSString stringWithFormat:@"%@ (%@)", txt, durString];
 }
 
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -221,46 +231,6 @@
 	// [anotherViewController release];
 	[self.tableView deselectRowAtIndexPath:indexPath animated:false]; 
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 - (void)dealloc {
