@@ -104,6 +104,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+/*
     [self handleDropboxUrl:url];
     return YES;
 }
@@ -112,6 +113,7 @@
 //url format: mytimes//?importdata=<base64 encoded xml data>
 //or mytimes://?importsource=<URL to XML file>
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+*/
     if (!url) {  return NO; }
     
     [self handleDropboxUrl:url];
@@ -204,6 +206,9 @@
 -(void) importFromXMLData:(NSData*)xmlData addAsNewProjects:(BOOL)addProjects {
 	if (xmlData == nil) return;
 	
+    NSString *strData = [[NSString alloc]initWithData:xmlData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", strData);
+    
 	//create parser and start parsing
 	XmlParser* parser = [[XmlParser alloc]init];
 	NSMutableArray* importedProjects = [parser parseFromXmlData:xmlData];
@@ -312,6 +317,32 @@
 }
 
 
+- (void)importFromMtbFile:(BOOL)addProjects myData:(NSData *)myData {
+    //add the projects as new ones, don't keep the old ones
+    if (!addProjects) {
+        [self.data removeAllObjects];
+    }
+    
+    NSArray* importedProjects = [NSKeyedUnarchiver unarchiveObjectWithData:myData];
+    for (Project* p in importedProjects) {
+        [self.data addObject:p];
+    }
+    
+    int count = [importedProjects count];
+    NSString* msg = [NSString stringWithFormat:NSLocalizedString(@"xml.import.n_projectsImported.message", @""), count];
+    //TODO print message about how many projects were imported
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"xml.import.projectsImportetTitle", @"")
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:NSLocalizedString(@"xml.import.importFinished.ok", @""), nil];
+    [alert show];
+    [alert release];
+    
+    //refresh table
+    [self.currentTableView reloadData];
+}
+
 //wenn ok gedrückt wurde den import fortsetzen
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	//TODO error handling
@@ -338,17 +369,22 @@
         {
             //if import file name set
             //load data from file
-            
             NSError* error = nil;
             NSData* myData = [[NSData dataWithContentsOfFile:self.importFile options:NSDataReadingMapped error:&error] retain];
             
             if (error) {
                 NSLog(@"Error: %@", [error localizedDescription]);
             }
-            else{
-                if (myData) {  
-                    //and start the import
-                    [self importFromXMLData:myData addAsNewProjects:addProjects];
+            else {
+                if (myData) {
+                    //import data from MTB data
+                    if ([[self.importFile pathExtension] isEqualToString:@"mtb"]) {
+                        [self importFromMtbFile:addProjects myData:myData];
+                    }
+                    else {
+                        //import from XML data
+                        [self importFromXMLData:myData addAsNewProjects:addProjects];
+                    }
                 }
             }
             
