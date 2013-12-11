@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- CHANGE THIS TITLE TAG -->
+<title>myTimes - time/task Tracking App for iPhone</title>
+
+<!-- media-queries.js -->
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<!-- html5.js -->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<link href="font/stylesheet.css" rel="stylesheet" type="text/css" />	
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link href="css/media-queries.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+<meta name="viewport" content="width=device-width" />
+ 
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+<link href='http://fonts.googleapis.com/css?family=Exo:400,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body data-spy="scroll">
+
+<!-- TOP MENU NAVIGATION -->
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<div>
+				<ul class="nav pull-right">
+					<li><a href="index.html">ENGLISCH</a></li>
+					<li><a href="index_de.html">DEUTSCH</a></li>
+				</ul>
+			</div>			
+			<div>
+				<ul id="nav-list" class="nav pull-left">
+					<li><a href="#home">Home</a></li>
+					<li><a href="#updates">Updates</a></li>
+					<li><a href="#screenshots">Screenshots</a></li>
+					<li><a href="#contact">Contact &AMP; impressum</a></li>	
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="container content container-fluid" id="home">
+
+	<!-- HOME -->
+	<div class="row-fluid">
+  
+		<!-- PHONES IMAGE FOR DESKTOP MEDIA QUERY -->
+		<div class="span5 visible-desktop">
+			<img src="img/phones.png">
+		</div>
+	
+		<!-- APP DETAILS -->
+		<div class="span7">
+	
+			<!-- ICON -->
+			<div class="visible-desktop" id="icon">
+				<img src="img/app_icon.png" />
+			</div>
+			
+			<!-- APP NAME -->
+			<div id="app-name">
+				<h1>myTimes</h1>
+			</div>
+			
+			<!-- VERSION -->
+			<div id="version">
+				<span class="version-top label label-inverse">Version 2.0</span>
+			</div>
+            
+			<!-- TAGLINE -->
+			<div id="tagline">
+				time/task Tracking App for iPhone
+			</div>
+		
+			<!-- PHONES IMAGE FOR TABLET MEDIA QUERY -->
+			<div class="hidden-desktop" id="phones">
+				<img src="img/phones.png">
+			</div>
+            
+			<!-- DESCRIPTION -->
+			<div id="description">
+				myTimes time/task tracking is an easy to use iPhone/iPod Touch application for project time tracking.
+			</div>
+			<div id="description">				
+				The captured times are organized in a project-sub project structure. In addition to track the start and end time (duration) you can also track pause times and add a description for each task. The project and sub project lists displays the accumulated timess of its items. myTimes allows you to export your tracked times and the accumulations to an excel friedly CSV format or as XML data via mail export.
+			</div>
+            
+			<!-- FEATURES -->
+			<ul id="features">
+				<li>track of project task times</li>
+				<li>remarks for the single tasks/times</li>
+				<li>recording times using start/stop mechanism</li>
+				<li>track pause time</li>
+				<li>Dropbox synchronisation</li>
+				<li>iOS7 optimized</li>
+				<li>eMail CSV or XML export</li>
+				<li>XML import (e.g. for backup/restore)</li>
+				<li>available in german and english</li>
+				<li>calendar view</li>
+			</ul>
+		
+			<!-- DOWNLOAD & REQUIREMENT BOX -->
+			<div class="download-box">
+				<a href="https://itunes.apple.com/en/app/mytimes-time-task-tracking/id303491904?mt=8"><img src="img/available-on-the-app-store.png"></a>
+			</div>
+			<div class="download-box">
+				<strong>Requirements:</strong><br>
+				Compatible with iPhone and iPod touch. Requires iOS5 or later.
+			</div>			
+		</div>
+	</div>
+	
+	
+	
+	<!-- ABOUT & UPDATES -->
+	<div class="row-fluid" id="about">
+	
+		<div class="span6 updates" id="updates">
+			<h2 class="page-title" id="scroll_up">
+				Updates
+				<a href="#home" class="arrow-top">
+				<img src="img/arrow-top.png">
+				</a>
+			</h2>
+			
+			<!-- UPDATES & RELEASE NOTES -->
+			
+			<h3 class="version">Version 2.0</h3>
+			<span class="release-date">October 2013</span>
+			<ul>
+				<li><span class="label new">NEW</span>Dropbox Synchronisation</li>
+				<li><span class="label new">NEW</span>iOS7 optimized</li>
+			</ul>
+			
+						
+		</div>
+	
+	</div>
+	
+	
+	
+	<!-- SCREENSHOTS -->
+	<div class="row-fluid" id="screenshots">
+		
+		<h2 class="page-title" id="scroll_up">
+				Screenshots
+				<a href="#home" class="arrow-top">
+				<img src="img/arrow-top.png">
+				</a>
+			</h2>
+		
+		<!-- SCREENSHOT IMAGES ROW 1-->
+		<ul class="thumbnails">
+			<li class="span3">
+				<a href="img/screenshot1.png" rel="gallery" class="thumbnail">
+				<img src="img/screenshot1.png" alt="">
+				</a>
+			</li>
+		
+			<li class="span3">
+				<a href="img/screenshot2.png" rel="gallery" class="thumbnail">
+				<img src="img/screenshot2.png" alt="">
+				</a>
+			</li>
+			
+			<li class="span3">
+				<a href="img/screenshot3.png" rel="gallery" class="thumbnail">
+				<img src="img/screenshot3.png" alt="">
+				</a>
+			</li>
+ 
+			<li class="span3">
+				<a href="img/screenshot5.png" rel="gallery" class="thumbnail">
+				<img src="img/screenshot5.png" alt="">
+				</a>
+			</li>
+		</ul>	
+				
+	</div>
+	
+	
+	
+	<!-- CONTACT -->
+	<div class="row-fluid" id="contact">
+	
+		<h2 class="page-title" id="scroll_up">
+				Contact &AMP; Impressum
+				<a href="#home" class="arrow-top">
+				<img src="img/arrow-top.png">
+				</a>
+			</h2>
+		
+		<!-- CONTACT INFO -->
+		<h3>Contact/Feedback</h3>
+		<a href="mailto:iphone@anteboth.com">iphone@anteboth.com</a></p>
+
+		
+				<h3>Impressum</h3>
+				<img src="img/contact.png" alt="contact"/>
+			
+				<h3>Hinweis gemäß Teledienstgesetz</h3>
+				<div>
+				Der Autor dieser Seiten weist darauf hin, dass einige Links zu externen Anbietern führen, 
+				sobald der Rahmen verlassen wird oder nicht ausdrücklich etwas anderes erklärt wird. 
+				Für den Inhalt der verlinkten Seiten sind die jeweiligen Autoren verantwortlich, 
+				der Autor dieser Seiten übernimmt keine Verantwortung für die Richtigkeit bzw. 
+				Aktualität des Inhalts, für die Rechtmäßigkeit oder die Erfüllung von Urheberrechtsbestimmungen dieser Seiten. 
+				</div>
+		
+		<!-- CONTACT FORM -->
+		<!--div class="span7" id="contact-form">
+			<form class="form-horizontal">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="name">Name</label>
+						<div class="controls">
+							<input class="input-xlarge" type="text" id="name" placeholder="John Doe">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="email">Email</label>
+						<div class="controls">
+							<input class="input-xlarge" type="text" id="email" placeholder="john@gmail.com">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="subject">Betreff</label>
+						<div class="controls">
+							<input class="input-xlarge" type="text" id="subject" placeholder="General Inquiry">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="message">Nachricht</label>
+						<div class="controls">
+							<textarea class="input-xlarge" rows="3" id="message" placeholder="Your message…"></textarea>
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btw btn-primary">SENDEN</button>
+					</div>
+				</fieldset>
+			</form>
+		</div-->		
+	</div>	
+</div>
+
+
+<!-- FOOTER -->
+<div class="footer container container-fluid">
+
+	<!-- COPYRIGHT - EDIT HOWEVER YOU WANT! -->
+	<div id="copyright">
+		Copyright &copy; 2013 Michael Anteboth<br>		
+	</div>
+	
+	<!-- CREDIT - PLEASE LEAVE THIS LINK! -->
+	<div id="credits">
+		<a href="http://www.trippoinc.com/flexapp">Theme</a> by <a href="http://www.trippoinc.com">Trippo</a>.
+	</div>
+
+</div>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-collapse.js"></script>
+<script src="js/bootstrap-scrollspy.js"></script>
+<script src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>
