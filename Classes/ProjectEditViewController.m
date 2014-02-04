@@ -14,6 +14,7 @@
 @synthesize project;
 @synthesize txtName;
 @synthesize isInEditMode;
+@synthesize nameLabel;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -24,9 +25,11 @@
 	//Projektname im editor setzen
 	if (isInEditMode) {
 		txtName.text = project.name;	
-	} else {	
-		txtName.placeholder = @"<Name>";
+	} else {
+		txtName.placeholder = NSLocalizedString(@"name.plcaeholder", @"");
 	}
+    
+    self.nameLabel.text = NSLocalizedString(@"name.label", @"");
     
     //create the save button
 	UIBarButtonItem *saveButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
@@ -84,8 +87,14 @@
 - (void)dealloc {
 	[project release];
 	[txtName release];
+    [nameLabel release];
 	[super dealloc];
 }
 
 
+- (void)viewDidUnload {
+    [nameLabel release];
+    nameLabel = nil;
+    [super viewDidUnload];
+}
 @end

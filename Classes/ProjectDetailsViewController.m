@@ -24,10 +24,13 @@
 
 //editing a project task either in edit mode or in creation mode
 - (void) editTask:(ProjectTask*)pt editMode:(BOOL)editMode {
-	
+	//check if IO7 is running
+    BOOL io7 = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0);
+    
 	if (!editMode) { //create new task
 		//create TaskEditView
-		TaskEditViewController* ctl = [[TaskEditViewController alloc] initWithNibName:@"TaskEditView" bundle:nil];
+        NSString* nibName = io7 ? @"TaskEditView" : @"TaskEditView_ios6";
+		TaskEditViewController* ctl = [[TaskEditViewController alloc] initWithNibName:nibName bundle:nil];
 		//set task in controller
 		ctl.task = pt;
 		ctl.editMode = editMode;

@@ -34,6 +34,8 @@
 		4C20FFC70F1B640400A46994 /* TaskCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C20FFC60F1B640400A46994 /* TaskCellView.m */; };
 		4C26B61E1719C83000B3C1BC /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C26B61D1719C83000B3C1BC /* CoreImage.framework */; };
 		4C26B6201719C83700B3C1BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C26B61F1719C83700B3C1BC /* QuartzCore.framework */; };
+		4C2A4A8D189EE6C700C4CAC4 /* TaskEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A4A8B189EE6C700C4CAC4 /* TaskEditView_ios6.xib */; };
+		4C2A4A90189EE91600C4CAC4 /* ProjectEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A4A8E189EE91600C4CAC4 /* ProjectEditView_ios6.xib */; };
 		4C2F97520F40DFC600F1C6F7 /* roundedrect3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F97510F40DFC600F1C6F7 /* roundedrect3.png */; };
 		4C2F9A1F0F44C00700F1C6F7 /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F9A1E0F44C00700F1C6F7 /* right-arrow.png */; };
 		4C2F9A2A0F44C55300F1C6F7 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F9A290F44C55300F1C6F7 /* left-arrow.png */; };
@@ -228,6 +230,9 @@
 		4C7885E30F3237CE00991E14 /* WorkUnitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7885E20F3237CE00991E14 /* WorkUnitCell.m */; };
 		4C7885E60F3237DA00991E14 /* WorkUnitCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7885E50F3237DA00991E14 /* WorkUnitCellView.m */; };
 		4C7886940F32497A00991E14 /* checkmark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C7886930F32497A00991E14 /* checkmark.jpg */; };
+		4C78D0D518A03F2400F08F9F /* ProjectTaskEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D0D318A03F2400F08F9F /* ProjectTaskEditView_ios6.xib */; };
+		4C78D0D918A044A600F08F9F /* BeginEndEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D0D718A044A600F08F9F /* BeginEndEditView_ios6.xib */; };
+		4C78D0DC18A045C200F08F9F /* PauseEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D0DB18A045C200F08F9F /* PauseEditView_ios6.xib */; };
 		4C84765A11F74AA90089DAAD /* BooleanEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C84765911F74AA90089DAAD /* BooleanEditController.m */; };
 		4C84765E11F74B7A0089DAAD /* BooleanEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C84765D11F74B7A0089DAAD /* BooleanEditView.xib */; };
 		4C88FA9010B7FA75004710AE /* NSDataAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C88FA8F10B7FA75004710AE /* NSDataAddition.m */; };
@@ -335,6 +340,8 @@
 		4C20FFC60F1B640400A46994 /* TaskCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCellView.m; sourceTree = "<group>"; };
 		4C26B61D1719C83000B3C1BC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		4C26B61F1719C83700B3C1BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4C2A4A8C189EE6C700C4CAC4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TaskEditView_ios6.xib; sourceTree = "<group>"; };
+		4C2A4A8F189EE91600C4CAC4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/ProjectEditView_ios6.xib; sourceTree = "<group>"; };
 		4C2F97510F40DFC600F1C6F7 /* roundedrect3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roundedrect3.png; sourceTree = "<group>"; };
 		4C2F9A1E0F44C00700F1C6F7 /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
 		4C2F9A290F44C55300F1C6F7 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
@@ -370,10 +377,7 @@
 		4C4B1A8117F5EA2A000241D0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4C4B1A8317F6C216000241D0 /* Default-568h@2x_ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x_ios7.png"; sourceTree = "<group>"; };
 		4C4B1A8417F6C216000241D0 /* Default@2x_ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x_ios7.png"; sourceTree = "<group>"; };
-		4C5B91B50F23640F008C3A84 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		4C5B91D30F23655C008C3A84 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/RootViewController.xib; sourceTree = "<group>"; };
-		4C5B91DA0F23665A008C3A84 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/TaskEditView.xib; sourceTree = "<group>"; };
-		4C5B91E10F2366F3008C3A84 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/ProjectEditView.xib; sourceTree = "<group>"; };
 		4C5B92740F238298008C3A84 /* TextEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEditViewController.h; sourceTree = "<group>"; };
 		4C5B92750F238298008C3A84 /* TextEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEditViewController.m; sourceTree = "<group>"; };
 		4C5B92770F2382A8008C3A84 /* TextEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextEditView.xib; sourceTree = "<group>"; };
@@ -436,6 +440,9 @@
 		4C7885E40F3237DA00991E14 /* WorkUnitCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkUnitCellView.h; sourceTree = "<group>"; };
 		4C7885E50F3237DA00991E14 /* WorkUnitCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkUnitCellView.m; sourceTree = "<group>"; };
 		4C7886930F32497A00991E14 /* checkmark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = checkmark.jpg; sourceTree = "<group>"; };
+		4C78D0D418A03F2400F08F9F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/ProjectTaskEditView_ios6.xib; sourceTree = "<group>"; };
+		4C78D0D818A044A600F08F9F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/BeginEndEditView_ios6.xib; sourceTree = "<group>"; };
+		4C78D0DB18A045C200F08F9F /* PauseEditView_ios6.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PauseEditView_ios6.xib; sourceTree = "<group>"; };
 		4C84765811F74AA90089DAAD /* BooleanEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanEditController.h; sourceTree = "<group>"; };
 		4C84765911F74AA90089DAAD /* BooleanEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanEditController.m; sourceTree = "<group>"; };
 		4C84765D11F74B7A0089DAAD /* BooleanEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooleanEditView.xib; sourceTree = "<group>"; };
@@ -516,12 +523,10 @@
 		4CFF15640F55D7070044DF72 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/ProjectTaskEditCellView.xib; sourceTree = "<group>"; };
 		4CFF16B00F589FD50044DF72 /* addTimeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addTimeIcon.png; sourceTree = "<group>"; };
 		4CFF17070F5ACCF90044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/ProjectTaskEditCellView.xib; sourceTree = "<group>"; };
-		4CFF17130F5ACD310044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/ProjectTaskEditView.xib; sourceTree = "<group>"; };
 		4CFF171A0F5ACD700044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/ProjectSubprojectView.xib; sourceTree = "<group>"; };
 		4CFF171F0F5ACDA00044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/StartStopView.xib; sourceTree = "<group>"; };
 		4CFF17240F5ACDCF0044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/PauseView.xib; sourceTree = "<group>"; };
 		4CFF17290F5ACDEB0044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/PlayPauseDeleteView.xib; sourceTree = "<group>"; };
-		4CFF17300F5ACE210044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/BeginEndEditView.xib; sourceTree = "<group>"; };
 		4CFF17360F5ACE4A0044DF72 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/EndEditCellView.xib; sourceTree = "<group>"; };
 		4CFF18460F5B1FAE0044DF72 /* cal_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cal_icon.png; sourceTree = "<group>"; };
 		4CFF18760F5DD1EE0044DF72 /* start-stop-screenshot_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-stop-screenshot_de.png"; path = "help/start-stop-screenshot_de.png"; sourceTree = "<group>"; };
@@ -639,6 +644,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4C78D0DA18A0453600F08F9F /* PauseEdit View */,
+				4C78D0D618A0448000F08F9F /* BeginEndEdit View */,
+				4CFF14970F5473650044DF72 /* help */,
+				4CAE62D10F9CCC56004F58C3 /* export */,
+				4CAE64290F9E24A1004F58C3 /* images */,
+				4C78D0D218A0377E00F08F9F /* TaskEdit View */,
+				4C78D0D118A036E900F08F9F /* Project Edit View */,
+				4C2F9EB70F476C9E00F1C6F7 /* WorkUnit */,
 				4CBF0A5B18106B2900C5F566 /* icon_100_rounded.png */,
 				4CBF0A59181069A800C5F566 /* icon_120.png */,
 				4CBF0A571810611400C5F566 /* Images.xcassets */,
@@ -648,16 +661,10 @@
 				4C00143115013AC200383811 /* Default@2x.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				4C3FDCFC11F62E78005D8D8D /* Default.png */,
-				4CAE64290F9E24A1004F58C3 /* images */,
-				4CAE62D10F9CCC56004F58C3 /* export */,
-				4CFF14970F5473650044DF72 /* help */,
-				4C2F9EB70F476C9E00F1C6F7 /* WorkUnit */,
-				4C5B91D80F236651008C3A84 /* TaskEditView.xib */,
 				4C2006FF0F1E86BE00A46994 /* DatePickerView.xib */,
 				4C2008650F1FC69D00A46994 /* TimePickerView.xib */,
 				4C0E71A8119D576200D23623 /* TaskEditViewController2.xib */,
 				4C20FACA0F1941AF00A46994 /* ProjectDetailsView.xib */,
-				4C5B91DF0F2366EA008C3A84 /* ProjectEditView.xib */,
 				4C5B91D10F236552008C3A84 /* RootViewController.xib */,
 				4C5B91B30F236403008C3A84 /* MainWindow.xib */,
 				4C20FE520F1A4B3400A46994 /* WorkUnitsListView.xib */,
@@ -727,9 +734,10 @@
 		4C2F9EB70F476C9E00F1C6F7 /* WorkUnit */ = {
 			isa = PBXGroup;
 			children = (
+				4C78D0D318A03F2400F08F9F /* ProjectTaskEditView_ios6.xib */,
+				4CFF17110F5ACD270044DF72 /* ProjectTaskEditView.xib */,
 				4C84765D11F74B7A0089DAAD /* BooleanEditView.xib */,
 				4CFF17050F5ACCE30044DF72 /* ProjectTaskEditCellView.xib */,
-				4CFF17110F5ACD270044DF72 /* ProjectTaskEditView.xib */,
 				4C5B92770F2382A8008C3A84 /* TextEditView.xib */,
 				4C2F9EA90F4763C600F1C6F7 /* WorkUnitDetailsView.xib */,
 				4CFF17180F5ACD680044DF72 /* ProjectSubprojectView.xib */,
@@ -738,11 +746,7 @@
 				4CFF17270F5ACDE30044DF72 /* PlayPauseDeleteView.xib */,
 				4C2F9F790F48402C00F1C6F7 /* RemarkView.xib */,
 				4C2FA0730F48607100F1C6F7 /* red-button-background.png */,
-				4C2FA1450F499B2300F1C6F7 /* PauseEditView.xib */,
-				4CFF172E0F5ACE1A0044DF72 /* BeginEndEditView.xib */,
-				4CEDB70B0F4B2BCB00C9DF8C /* BeginEditCellView.xib */,
 				4CFF17340F5ACE430044DF72 /* EndEditCellView.xib */,
-				4CEDB9730F4F2ACB00C9DF8C /* PauseEditCellView.xib */,
 			);
 			name = WorkUnit;
 			sourceTree = "<group>";
@@ -826,6 +830,44 @@
 				4C774A9114608D83003347C4 /* env.rb */,
 			);
 			path = support;
+			sourceTree = "<group>";
+		};
+		4C78D0D118A036E900F08F9F /* Project Edit View */ = {
+			isa = PBXGroup;
+			children = (
+				4C2A4A8E189EE91600C4CAC4 /* ProjectEditView_ios6.xib */,
+				4C5B91DF0F2366EA008C3A84 /* ProjectEditView.xib */,
+			);
+			name = "Project Edit View";
+			sourceTree = "<group>";
+		};
+		4C78D0D218A0377E00F08F9F /* TaskEdit View */ = {
+			isa = PBXGroup;
+			children = (
+				4C2A4A8B189EE6C700C4CAC4 /* TaskEditView_ios6.xib */,
+				4C5B91D80F236651008C3A84 /* TaskEditView.xib */,
+			);
+			name = "TaskEdit View";
+			sourceTree = "<group>";
+		};
+		4C78D0D618A0448000F08F9F /* BeginEndEdit View */ = {
+			isa = PBXGroup;
+			children = (
+				4C78D0D718A044A600F08F9F /* BeginEndEditView_ios6.xib */,
+				4CFF172E0F5ACE1A0044DF72 /* BeginEndEditView.xib */,
+				4CEDB70B0F4B2BCB00C9DF8C /* BeginEditCellView.xib */,
+			);
+			name = "BeginEndEdit View";
+			sourceTree = "<group>";
+		};
+		4C78D0DA18A0453600F08F9F /* PauseEdit View */ = {
+			isa = PBXGroup;
+			children = (
+				4C78D0DB18A045C200F08F9F /* PauseEditView_ios6.xib */,
+				4C2FA1450F499B2300F1C6F7 /* PauseEditView.xib */,
+				4CEDB9730F4F2ACB00C9DF8C /* PauseEditCellView.xib */,
+			);
+			name = "PauseEdit View";
 			sourceTree = "<group>";
 		};
 		4CAE62D10F9CCC56004F58C3 /* export */ = {
@@ -1089,6 +1131,7 @@
 				4C5B92780F2382A8008C3A84 /* TextEditView.xib in Resources */,
 				4C5B92D60F239545008C3A84 /* pencil-icon-60.png in Resources */,
 				4C5B92D80F2395B9008C3A84 /* pencil-icon-30.png in Resources */,
+				4C78D0D518A03F2400F08F9F /* ProjectTaskEditView_ios6.xib in Resources */,
 				4C5B92DC0F2396A1008C3A84 /* pencil-icon-20.png in Resources */,
 				4C5B92F50F23A3F0008C3A84 /* AppInfoView.xib in Resources */,
 				4C4B1A8617F6C217000241D0 /* Default@2x_ios7.png in Resources */,
@@ -1104,6 +1147,7 @@
 				4C2F9C450F46E38900F1C6F7 /* InAppSettings.bundle in Resources */,
 				4C2F9EAA0F4763C600F1C6F7 /* WorkUnitDetailsView.xib in Resources */,
 				4CFF17190F5ACD680044DF72 /* ProjectSubprojectView.xib in Resources */,
+				4C2A4A8D189EE6C700C4CAC4 /* TaskEditView_ios6.xib in Resources */,
 				4CBF0A5A181069A800C5F566 /* icon_120.png in Resources */,
 				4CFF171E0F5ACD920044DF72 /* StartStopView.xib in Resources */,
 				4CFF17230F5ACDC80044DF72 /* PauseView.xib in Resources */,
@@ -1129,11 +1173,14 @@
 				4CAE67BF0FA3132D004F58C3 /* export.settings.plist in Resources */,
 				4CB7BF9A0FC9C7D90066E152 /* 57-download.png in Resources */,
 				4C8EC2790FD70A03000E0078 /* ProjectSelectionTableView.xib in Resources */,
+				4C78D0D918A044A600F08F9F /* BeginEndEditView_ios6.xib in Resources */,
 				4C9C5D9318129A330035175A /* Icon@2x.png in Resources */,
 				4CC86ACD0FE0204C00478107 /* import.png in Resources */,
 				4CC86ADB0FE0222200478107 /* cal_icon_19x19.png in Resources */,
 				4CC86ADE0FE022E700478107 /* mail.png in Resources */,
 				4CC86AE30FE024F600478107 /* add_icon_19x19.png in Resources */,
+				4C78D0DC18A045C200F08F9F /* PauseEditView_ios6.xib in Resources */,
+				4C2A4A90189EE91600C4CAC4 /* ProjectEditView_ios6.xib in Resources */,
 				4CCED51A1034A13C00B29892 /* version-history.txt in Resources */,
 				4C0E71AA119D576200D23623 /* TaskEditViewController2.xib in Resources */,
 				4CAB390B11D3D60C0012BD28 /* ImportUrlViewController.xib in Resources */,
@@ -1395,11 +1442,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4C2A4A8B189EE6C700C4CAC4 /* TaskEditView_ios6.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C2A4A8C189EE6C700C4CAC4 /* English */,
+			);
+			name = TaskEditView_ios6.xib;
+			sourceTree = "<group>";
+		};
+		4C2A4A8E189EE91600C4CAC4 /* ProjectEditView_ios6.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C2A4A8F189EE91600C4CAC4 /* English */,
+			);
+			name = ProjectEditView_ios6.xib;
+			sourceTree = "<group>";
+		};
 		4C5B91B30F236403008C3A84 /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				28AD735F0D9D9599002E5188 /* English */,
-				4C5B91B50F23640F008C3A84 /* German */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -1416,7 +1478,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4C200A4E0F1FF8D000A46994 /* English */,
-				4C5B91DA0F23665A008C3A84 /* German */,
 			);
 			name = TaskEditView.xib;
 			sourceTree = "<group>";
@@ -1425,7 +1486,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4C20FB860F19636400A46994 /* English */,
-				4C5B91E10F2366F3008C3A84 /* German */,
 			);
 			name = ProjectEditView.xib;
 			sourceTree = "<group>";
@@ -1437,6 +1497,22 @@
 				4C5B947E0F23C89B008C3A84 /* German */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4C78D0D318A03F2400F08F9F /* ProjectTaskEditView_ios6.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C78D0D418A03F2400F08F9F /* English */,
+			);
+			name = ProjectTaskEditView_ios6.xib;
+			sourceTree = "<group>";
+		};
+		4C78D0D718A044A600F08F9F /* BeginEndEditView_ios6.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C78D0D818A044A600F08F9F /* English */,
+			);
+			name = BeginEndEditView_ios6.xib;
 			sourceTree = "<group>";
 		};
 		4CFF17050F5ACCE30044DF72 /* ProjectTaskEditCellView.xib */ = {
@@ -1452,7 +1528,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4CFF15560F55D41B0044DF72 /* English */,
-				4CFF17130F5ACD310044DF72 /* German */,
 			);
 			name = ProjectTaskEditView.xib;
 			sourceTree = "<group>";
@@ -1497,7 +1572,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4CEDB6CE0F499D7100C9DF8C /* English */,
-				4CFF17300F5ACE210044DF72 /* German */,
 			);
 			name = BeginEndEditView.xib;
 			sourceTree = "<group>";

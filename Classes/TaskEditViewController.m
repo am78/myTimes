@@ -56,8 +56,10 @@
 	if (editMode) {
 		txtName.text = task.name;	
 	} else {	
-		txtName.placeholder = @"<Name>";
+		txtName.placeholder = NSLocalizedString(@"name.plcaeholder", @"");
 	}
+    
+    self.nameLabel.text = NSLocalizedString(@"taskname.label", @"");
     
     //create the save button
 	UIBarButtonItem *saveButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
@@ -84,8 +86,13 @@
 - (void)dealloc {
 	[task release];
 	[txtName release];
+    [_nameLabel release];
     [super dealloc];
 }
 
 
+- (void)viewDidUnload {
+    [self setNameLabel:nil];
+    [super viewDidUnload];
+}
 @end

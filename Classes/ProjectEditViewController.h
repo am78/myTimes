@@ -15,11 +15,13 @@
 	Project* project;
 	IBOutlet UITextField *txtName;
 	BOOL isInEditMode;
+    IBOutlet UILabel *nameLabel;
 }
 
 @property BOOL isInEditMode;
 @property (retain) Project* project;
 @property (retain) IBOutlet UITextField *txtName;
+@property (retain) IBOutlet UILabel *nameLabel;
 
 - (IBAction) saveProject:(id)sender;
 - (IBAction) cancelEditing:(id)sender;

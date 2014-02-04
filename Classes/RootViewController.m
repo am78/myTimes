@@ -351,8 +351,13 @@
 
 //edit a project either in edit mode or in creation mode
 -(void) editProject:(Project*)p editMode:(BOOL)editMode {
-	//create ProjectEditView
-	ProjectEditViewController* ctl = [[ProjectEditViewController alloc] initWithNibName:@"ProjectEditView" bundle:nil];
+	
+    //check if IO7 is running
+    BOOL io7 = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0);
+    NSString* nibName = io7 ? @"ProjectEditView" : @"ProjectEditView_ios6";
+
+    //create ProjectEditView
+	ProjectEditViewController* ctl = [[ProjectEditViewController alloc] initWithNibName:nibName bundle:nil];
 	//set project in controller
 	ctl.project = p;
 	ctl.isInEditMode = editMode;

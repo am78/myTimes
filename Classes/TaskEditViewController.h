@@ -22,6 +22,7 @@
 @property (retain) UITableView* parentTable;
 @property (retain) ProjectTask* task;
 @property (retain) IBOutlet UITextField *txtName;
+@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 
 - (IBAction) saveTask:(id)sender;
 - (IBAction) cancelEditing:(id)sender;

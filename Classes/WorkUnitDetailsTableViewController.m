@@ -528,10 +528,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //check if IO7 is running
+    BOOL io7 = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0);
+    
 	if (indexPath == nil) return;
 	if (indexPath.section == COLIDX_PROJECT) {
+        NSString* nibName = io7 ? @"ProjectTaskEditView" : @"ProjectTaskEditView_ios6";
+        
         //switch to project subproject mask
-        ProjectTaskEditViewController* ctl = [[ProjectTaskEditViewController alloc] initWithNibName:@"ProjectTaskEditView" bundle:nil];
+        ProjectTaskEditViewController* ctl = [[ProjectTaskEditViewController alloc] initWithNibName:nibName bundle:nil];
         ctl.parent = self;
         ctl.workUnit = wuCopy;
         ctl.project = parentProject;
@@ -544,8 +549,9 @@
         
 		 [ctl release];
 	} else if (indexPath.section == COLIDX_START && indexPath.row < 2) {
+        NSString* nibName = io7 ? @"BeginEndEditView" : @"BeginEndEditView_ios6";
 		//Pause edit mask
-		BeginEndEditViewController* ctl = [[BeginEndEditViewController alloc] initWithNibName:@"BeginEndEditView" bundle:nil];
+		BeginEndEditViewController* ctl = [[BeginEndEditViewController alloc] initWithNibName:nibName bundle:nil];
 		ctl.parent = self;
 		ctl.workUnit = wuCopy;
 		ctl.editStartTime = indexPath.row == 0;
@@ -558,8 +564,9 @@
         
 		[ctl release];
 	} else if (indexPath.section == COLIDX_PAUSE) {
+        NSString* nibName = io7 ? @"PauseEditView" : @"PauseEditView_ios6";
 		//Switch to pause mask
-		PauseEditViewController* ctl = [[PauseEditViewController alloc] initWithNibName:@"PauseEditView" bundle:nil];
+		PauseEditViewController* ctl = [[PauseEditViewController alloc] initWithNibName:nibName bundle:nil];
 		ctl.parent = self;
 		ctl.workUnit = wuCopy;
         
