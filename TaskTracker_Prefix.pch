@@ -6,3 +6,7 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+
+//check if IO7 is running
+#define IOS7_CHECK ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0);

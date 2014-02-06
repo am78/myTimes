@@ -25,7 +25,7 @@
 //editing a project task either in edit mode or in creation mode
 - (void) editTask:(ProjectTask*)pt editMode:(BOOL)editMode {
 	//check if IO7 is running
-    BOOL io7 = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0);
+    BOOL io7 = IOS7_CHECK;
     
 	if (!editMode) { //create new task
 		//create TaskEditView
