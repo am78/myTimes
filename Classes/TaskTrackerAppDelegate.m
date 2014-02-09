@@ -557,7 +557,7 @@
 -(BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     //dropbox initialization
-    DBAccountManager* accountMgr = [[DBAccountManager alloc] initWithAppKey:@"h1a0x2byko52new" secret:@"r7dou6ojz872207"];
+    DBAccountManager* accountMgr = [[DBAccountManager alloc] initWithAppKey:@"h1a0x2byko52asd" secret:@"r7dou6ojz872211"];
     [DBAccountManager setSharedManager:accountMgr];
     DBAccount *account = accountMgr.linkedAccount;
     if (account) {
