@@ -63,7 +63,6 @@
 		4C4B1A8517F6C217000241D0 /* Default-568h@2x_ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4B1A8317F6C216000241D0 /* Default-568h@2x_ios7.png */; };
 		4C4B1A8617F6C217000241D0 /* Default@2x_ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4B1A8417F6C216000241D0 /* Default@2x_ios7.png */; };
 		4C5B91B40F236403008C3A84 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B91B30F236403008C3A84 /* MainWindow.xib */; };
-		4C5B91D20F236552008C3A84 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B91D10F236552008C3A84 /* RootViewController.xib */; };
 		4C5B91D90F236651008C3A84 /* TaskEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B91D80F236651008C3A84 /* TaskEditView.xib */; };
 		4C5B91E00F2366EA008C3A84 /* ProjectEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B91DF0F2366EA008C3A84 /* ProjectEditView.xib */; };
 		4C5B92760F238298008C3A84 /* TextEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B92750F238298008C3A84 /* TextEditViewController.m */; };
@@ -233,6 +232,7 @@
 		4C78D0D518A03F2400F08F9F /* ProjectTaskEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D0D318A03F2400F08F9F /* ProjectTaskEditView_ios6.xib */; };
 		4C78D0D918A044A600F08F9F /* BeginEndEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D0D718A044A600F08F9F /* BeginEndEditView_ios6.xib */; };
 		4C78D0DC18A045C200F08F9F /* PauseEditView_ios6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D0DB18A045C200F08F9F /* PauseEditView_ios6.xib */; };
+		4C78D12D18A7A43A00F08F9F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B91D10F236552008C3A84 /* RootViewController.xib */; };
 		4C84765A11F74AA90089DAAD /* BooleanEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C84765911F74AA90089DAAD /* BooleanEditController.m */; };
 		4C84765E11F74B7A0089DAAD /* BooleanEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C84765D11F74B7A0089DAAD /* BooleanEditView.xib */; };
 		4C88FA9010B7FA75004710AE /* NSDataAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C88FA8F10B7FA75004710AE /* NSDataAddition.m */; };
@@ -443,6 +443,11 @@
 		4C78D0D418A03F2400F08F9F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/ProjectTaskEditView_ios6.xib; sourceTree = "<group>"; };
 		4C78D0D818A044A600F08F9F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/BeginEndEditView_ios6.xib; sourceTree = "<group>"; };
 		4C78D0DB18A045C200F08F9F /* PauseEditView_ios6.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PauseEditView_ios6.xib; sourceTree = "<group>"; };
+		4C78D12F18A7C09400F08F9F /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		4C78D13018A7C0C700F08F9F /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ProjectEditView_ios6.xib; sourceTree = "<group>"; };
+		4C78D13118A7C0F000F08F9F /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/TaskEditView_ios6.xib; sourceTree = "<group>"; };
+		4C78D13218A7C14300F08F9F /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ProjectTaskEditView_ios6.xib; sourceTree = "<group>"; };
+		4C78D13318A7C17200F08F9F /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/BeginEndEditView_ios6.xib; sourceTree = "<group>"; };
 		4C84765811F74AA90089DAAD /* BooleanEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanEditController.h; sourceTree = "<group>"; };
 		4C84765911F74AA90089DAAD /* BooleanEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanEditController.m; sourceTree = "<group>"; };
 		4C84765D11F74B7A0089DAAD /* BooleanEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BooleanEditView.xib; sourceTree = "<group>"; };
@@ -1118,8 +1123,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C78D12D18A7A43A00F08F9F /* RootViewController.xib in Resources */,
 				4C5B91B40F236403008C3A84 /* MainWindow.xib in Resources */,
-				4C5B91D20F236552008C3A84 /* RootViewController.xib in Resources */,
 				4C20FACB0F1941AF00A46994 /* ProjectDetailsView.xib in Resources */,
 				4C4B1A8217F5EA2A000241D0 /* Default-568h@2x.png in Resources */,
 				4C5B91E00F2366EA008C3A84 /* ProjectEditView.xib in Resources */,
@@ -1446,6 +1451,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4C2A4A8C189EE6C700C4CAC4 /* English */,
+				4C78D13118A7C0F000F08F9F /* de */,
 			);
 			name = TaskEditView_ios6.xib;
 			sourceTree = "<group>";
@@ -1454,6 +1460,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4C2A4A8F189EE91600C4CAC4 /* English */,
+				4C78D13018A7C0C700F08F9F /* de */,
 			);
 			name = ProjectEditView_ios6.xib;
 			sourceTree = "<group>";
@@ -1462,6 +1469,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				28AD735F0D9D9599002E5188 /* English */,
+				4C78D12F18A7C09400F08F9F /* de */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -1503,6 +1511,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4C78D0D418A03F2400F08F9F /* English */,
+				4C78D13218A7C14300F08F9F /* de */,
 			);
 			name = ProjectTaskEditView_ios6.xib;
 			sourceTree = "<group>";
@@ -1511,6 +1520,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4C78D0D818A044A600F08F9F /* English */,
+				4C78D13318A7C17200F08F9F /* de */,
 			);
 			name = BeginEndEditView_ios6.xib;
 			sourceTree = "<group>";
@@ -1609,7 +1619,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TaskTracker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Calendar/build/Debug-iphonesimulator\"",
@@ -1640,7 +1650,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TaskTracker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Calendar/build/Debug-iphonesimulator\"",
@@ -1774,7 +1784,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TaskTracker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Calendar/build/Debug-iphonesimulator\"",
